@@ -30,7 +30,8 @@ header{
     cursor: pointer;
 }
 .social-link i img:hover{
-    background-color: rgba(238,224,208);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
     border-radius: 10px;
     border-width: 1px;
 }
@@ -60,7 +61,8 @@ header{
     cursor: pointer;
 }
 .icons i img:hover{
-    background-color: rgba(238,224,208);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
     border-radius: 10px;
     border-width: 1px;
 }
