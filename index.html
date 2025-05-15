@@ -37,6 +37,9 @@
 </header>
 
 <main>
+    <div class="welcome-message">
+  <span>Welcome to a world of imagination and style</span>
+</div>
     
     <h1 class="slider-title">- CATEGORIES -</h1>
 
@@ -91,8 +94,10 @@
         <button id="prev"><</button>
     </div>
 
-    <section class="new-arrivals">
-        <h2>-New Arrivals-</h2>
+   <section class="new-arrivals">
+    <h2>-New Arrivals-</h2>
+    <div class="arrivals-slider-container">
+        <button class="arrivals-arrow left">&#8592;</button>
         <div class="arrivals-list">
             <div class="arrival-item">
                 <img src="./image/outfits/starlitgown.png" alt="New Arrival 1" width="120">
@@ -105,20 +110,52 @@
                 <p>Lightweight cape with cosmic embroidery.</p>
             </div>
             <div class="arrival-item">
-            <img src="./image/outfits/moonlightdress.png" alt="New Arrival 3" width="120">
-            <h3>Moonlight Dress</h3>
-            <p>Elegant dress inspired by the glow of the moon.</p>
+                <img src="./image/outfits/moonlightdress.png" alt="New Arrival 3" width="120">
+                <h3>Moonlight Dress</h3>
+                <p>Elegant dress inspired by the glow of the moon.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/starboots.png" alt="New Arrival 4" width="120">
+                <h3>Star Boots</h3>
+                <p>Boots with sparkling star patterns for a magical touch.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/dreamerscarf.png" alt="New Arrival 5" width="120">
+                <h3>Dreamer Scarf</h3>
+                <p>Soft scarf with whimsical, dreamy prints.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/sunrisecloak.png" alt="Sunrise Cloak" width="120">
+                <h3>Sunrise Cloak</h3>
+                <p>Warm, flowing cloak with a gradient sunrise palette.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/aurorapants.png" alt="Aurora Pants" width="120">
+                <h3>Aurora Pants</h3>
+                <p>Pants with iridescent, shifting colors inspired by the aurora.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/cloudberet.png" alt="Cloud Beret" width="120">
+                <h3>Cloud Beret</h3>
+                <p>Soft beret with fluffy, cloud-like textures.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/galaxygloves.png" alt="Galaxy Gloves" width="120">
+                <h3>Galaxy Gloves</h3>
+                <p>Elegant gloves with tiny star and nebula patterns.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/moondreamskirt.png" alt="Moon Dream Skirt" width="120">
+                <h3>Moon Dream Skirt</h3>
+                <p>Flowy skirt with crescent moon embroidery.</p>
+            </div>
+            <div class="arrival-item">
+                <img src="./image/outfits/stellarshawl.png" alt="Stellar Shawl" width="120">
+                <h3>Stellar Shawl</h3>
+                <p>Lightweight shawl with shimmering, star-like threads.</p>
+            </div>
         </div>
-        <div class="arrival-item">
-            <img src="./image/outfits/starboots.png" alt="New Arrival 4" width="120">
-            <h3>Star Boots</h3>
-            <p>Boots with sparkling star patterns for a magical touch.</p>
-        </div>
-        <div class="arrival-item">
-            <img src="./image/outfits/dreamerscarf.png" alt="New Arrival 5" width="120">
-            <h3>Dreamer Scarf</h3>
-            <p>Soft scarf with whimsical, dreamy prints.</p>
-        </div>
+        <button class="arrivals-arrow right">&#8594;</button>
     </div>
 </section>
 
@@ -129,6 +166,7 @@
         </p>
     </section>
 
+    <script src="NewArrivalsArrow.js"></script>
     <script src="search.js"></script>
     <script src="app.js"></script>
 </main>
