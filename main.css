@@ -4,7 +4,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: dreamy, monospace;
+    font-family: 'Poiret One', sans-serif;
+    font-weight: 100; /* Thin, curvy, modern */
     flex-direction: column;
 }
 
@@ -13,9 +14,9 @@ main{
     text-align: center;
     margin: 0 0 40px 0;
     padding: 10px 20px 10px 20px;
-    font-size: 40px;
+    font-size: 35px;
     color: white;
-    background-color: #202020;
+    background-color: #a09f9f;
     opacity: 60%;
     border-radius: 50px;
 }
@@ -42,10 +43,12 @@ main{
 }
 .item h1{
     line-height: 0.8; /* adjust line spacing */
+    font-size: 30px;
 }
 .item p {
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 14px;
 }
 .item i img{
     transition: 0.5s ease;
@@ -81,4 +84,3 @@ main{
 #next:hover{
     opacity: 1;
 }
-
