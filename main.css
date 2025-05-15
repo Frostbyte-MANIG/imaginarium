@@ -44,6 +44,7 @@ main{
 .item:hover {
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.743); /* Add shadow effect */
     transition: 0.5s;
+    cursor: pointer;
 }
 .item h1{
     line-height: 0.8; /* adjust line spacing */
@@ -53,13 +54,6 @@ main{
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 14px;
-}
-.item i img{
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-.item i img:hover{
-    filter: brightness(30%);
 }
 @media screen and (max-width:450px){ /*screen size adjustment*/
     .item i img{
