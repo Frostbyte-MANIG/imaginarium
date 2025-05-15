@@ -41,6 +41,10 @@ main{
     left: calc(50% - 110px);
     top: 0;
 }
+.item:hover {
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.743); /* Add shadow effect */
+    transition: 0.5s;
+}
 .item h1{
     line-height: 0.8; /* adjust line spacing */
     font-size: 30px;
