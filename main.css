@@ -9,6 +9,61 @@ main{
     flex-direction: column;
 }
 
+.logo h3 {
+    font-size: 2.5rem; /* or try 40px */
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+/* search bar */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input {
+    width: 0;
+    padding: 12px 8px 8px 32px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
+    background: #f3f3f3;
+    color: #333;
+    font-family: 'Poiret One', sans-serif;
+    font-size: 16px;
+    position: absolute;
+    right: 10px;
+    top: -7.5px;
+    margin-bottom: 0px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.search-container.active .search-input {
+    width: 200px;
+    opacity: 1;
+    pointer-events: auto;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.search-icon {
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.search-container .search-icon img {
+    transition: opacity 0.4s;
+}
+
+.search-container.active .search-icon img {
+    opacity: 0; /* or 0 for fully transparent */
+    pointer-events: none;
+}
+
 /* slider title */
 .slider-title {
     text-align: center;
@@ -41,11 +96,13 @@ main{
     left: calc(50% - 110px);
     top: 0;
 }
+
 .item:hover {
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.743); /* Add shadow effect */
     transition: 0.5s;
     cursor: pointer;
 }
+
 .item h1{
     line-height: 0.8; /* adjust line spacing */
     font-size: 30px;
@@ -54,6 +111,13 @@ main{
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 14px;
+}
+.item i img{
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.item i img:hover{
+    filter: brightness(30%);
 }
 @media screen and (max-width:450px){ /*screen size adjustment*/
     .item i img{
