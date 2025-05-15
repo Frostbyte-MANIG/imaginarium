@@ -85,7 +85,7 @@ main{
 }
 .item{
     position: absolute;
-    width: 200px;
+    width: 260px;
     height: 300px;
     text-align: center;
     font-size: large;
@@ -93,7 +93,7 @@ main{
     border-radius: 15px;
     padding: 20px;
     transition: 0.5s;
-    left: calc(50% - 110px);
+    left: calc(50% - 150px);
     top: 0;
 }
 
@@ -145,4 +145,91 @@ main{
 #prev:hover,
 #next:hover{
     opacity: 1;
+}
+
+/*new arrivals*/
+.new-arrivals {
+    margin: 60px auto 0 auto;
+    max-width: 900px;
+    text-align: center;
+    padding: 40px 0;
+    border-radius: 30px;
+    background: linear-gradient(
+        to bottom,
+        #f3e7fa 0%,
+        #e3f0ff 50%,
+        #b1b1c7 100%
+    );
+    box-shadow: 0 8px 32px rgba(160, 159, 159, 0.10);
+}
+.new-arrivals h2 {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+    font-family: 'Poiret One', sans-serif;
+}
+
+.arrivals-list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 40px 20px 40px; /* Add horizontal padding */
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f3f3f3;
+    position: relative;
+    min-height: 280px; /* Ensures consistent height */
+    align-items: flex-start; /* Align items to the top */
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.arrivals-list::before,
+.arrivals-list::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 1;
+}
+.arrivals-list::before,
+.arrivals-list::after {
+    display: none;
+}
+
+.arrival-item {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(70, 66, 66, 0.162);
+    padding: 20px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    flex: 0 0 auto;
+}
+.arrival-item:hover {
+    box-shadow: 0 8px 24px rgb(234, 229, 229);
+    transform: translateY(-6px) scale(1.04);
+}
+
+.arrival-item img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.arrival-item h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px 0;
+    font-family: 'Poiret One', sans-serif;
+}
+
+.arrival-item p {
+    font-size: 0.95rem;
+    color: #555;
 }
