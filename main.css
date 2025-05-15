@@ -1,0 +1,84 @@
+main{
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: dreamy, monospace;
+    flex-direction: column;
+}
+
+/* slider title */
+.slider-title {
+    text-align: center;
+    margin: 0 0 40px 0;
+    padding: 10px 20px 10px 20px;
+    font-size: 40px;
+    color: white;
+    background-color: #202020;
+    opacity: 60%;
+    border-radius: 50px;
+}
+
+/* image slider */
+.slider{
+    position: relative;
+    width: 100%;
+    height: 370px;
+    overflow: hidden;
+}
+.item{
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    font-size: large;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 20px;
+    transition: 0.5s;
+    left: calc(50% - 110px);
+    top: 0;
+}
+.item h1{
+    line-height: 0.8; /* adjust line spacing */
+}
+.item p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.item i img{
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.item i img:hover{
+    filter: brightness(30%);
+}
+@media screen and (max-width:450px){ /*screen size adjustment*/
+    .item i img{
+        width: 20px;
+    }
+}
+#next, #prev{
+    position: absolute;
+    top: 40%;
+    color: #202020;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: xxx-large ;
+    font-family: monospace;
+    font-weight: normal;
+    left: 50px;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+#next{
+    left: unset;
+    right: 50px;
+}
+#prev:hover,
+#next:hover{
+    opacity: 1;
+}
+
