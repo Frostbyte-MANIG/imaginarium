@@ -9,52 +9,108 @@ main{
     flex-direction: column;
 }
 
+/*navigation*/
+.main-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #fff; /* Match header background */
+    box-shadow: 0 2px 12px rgba(60,60,60,0.06); /* Match header shadow */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+    padding: 0 40px;
+}
+
+header:hover .main-nav,
+header:focus-within .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.main-nav ul {
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    justify-content: center;
+    /* Remove min-width */
+}
+
+.main-nav li a {
+    color: #222;
+    text-decoration: none;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.main-nav li a:hover {
+    color: #7b5eea;
+}
+
+/* header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(60,60,60,0.06);
+}
+header.hide-on-scroll {
+    transform: translateY(-100%);
+}
+
+.logo h5, .logo h3 {
+    color: #252527;
+    margin: 0;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 12px #fff, 0 2px 8px #b388ff44;
+}
+
 .logo h3 {
-    font-size: 3rem; /* or try 40px */
-    letter-spacing: 0.1em;
+    font-size: 2.2rem;
+    font-family: 'Poiret One', cursive;
+    font-weight: 700;
+}
+
+.logo h5 {
+    font-size: 1.1rem;
+    font-family: 'Poiret One', cursive;
     font-weight: 400;
+    opacity: 0.85;
 }
 
 /*welcome text*/
 .welcome-message {
-    position: relative;
-    text-align: center;
-    margin-top: 48px;
-    margin-bottom: 24px;
-    font-family: 'Poiret One', cursive;
-    font-size: 2.2rem;
-    color: #111;
-    letter-spacing: 0.12em;
-    border-radius: 40px;
-    padding: 22px 44px;
-    box-shadow:
-        0 8px 40px 0 rgba(60,60,60,0.10),
-        0 2px 24px 0 rgba(180,180,180,0.09),
-        0 18px 32px -8px rgba(60,60,60,0.18);
-    backdrop-filter: blur(8px);
-    opacity: 0.97;
-    overflow: hidden;
-    background: linear-gradient(
-        to bottom,
-        rgba(40,40,40,0.12) 0%,
-        rgba(220,220,220,0.10) 60%,
-        rgba(255,255,255,0.0) 100%
-    );
-    animation: floatSync 3.5s ease-in-out infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 64px auto 64px auto;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 0;
+    animation: welcomeFadeIn 1.8s cubic-bezier(0.4,0,0.2,1) 0.2s forwards;
 }
 
-.welcome-message span {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    color: #111;
-    text-shadow: 0 4px 24px rgba(180,180,180,0.12), 0 1px 0 #fff;
-    /* Remove the animation from here */
-}
-
-@keyframes floatSync {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(20px); }
+@keyframes welcomeFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
 }
 
 /* search bar */
@@ -102,28 +158,42 @@ main{
 }
 
 .search-container.active .search-icon img {
-    opacity: 0; /* or 0 for fully transparent */
+    opacity: 0; 
     pointer-events: none;
 }
 
 /* slider title */
 .slider-title {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+    color: #3a3a3a;
     text-align: center;
-    margin: 40px 0 40px 0; /* Increased top margin from 0 to 40px */
-    padding: 10px 20px 10px 20px;
-    font-size: 35px;
-    color: white;
-    background-color: #a09f9f;
-    opacity: 60%;
-    border-radius: 50px;
+    margin: 32px 0 16px 0;
+    position: relative;
+}
+
+.slider-title::after {
+    content: "";
+    display: block;
+    margin: 12px auto 0 auto;
+    width: 100%;                
+    max-width: 420px;          
+    height: 16px;
+    border-radius: 12px;
+    background: rgba(60,60,60,0.10);
+    filter: blur(8px);
+    box-shadow: 0 12px 32px 0 rgba(60,60,60,0.18);
 }
 
 /* image slider */
 .slider{
     position: relative;
+    margin-top: 40px;
     width: 100%;
     height: 370px;
     overflow: hidden;
+    z-index: 1;
 }
 .item{
     position: absolute;
@@ -135,12 +205,12 @@ main{
     border-radius: 15px;
     padding: 20px;
     transition: 0.5s;
-    left: calc(50% - 150px);
+    left: calc(50% - 130px);
     top: 0;
 }
 
 .item:hover {
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.743); /* Add shadow effect */
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.743);
     transition: 0.5s;
     cursor: pointer;
 }
@@ -217,7 +287,7 @@ main{
     letter-spacing: 0.1em;
     color: #3a3a3a;
     margin-bottom: 32px;
-    text-align: center; /* <-- Add this line */
+    text-align: center; 
 }
 .arrivals-slider-container {
     display: flex;
@@ -226,103 +296,395 @@ main{
     width: 100%;
 }
 
-.arrivals-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #fff;
-    color: #202020;
-    border-radius: 10px;
-    border: none;
-    font-size: xxx-large;
-    font-family: monospace;
-    font-weight: normal;
-    width: 56px;
-    height: 56px;
-    opacity: 0.5;
-    transition: opacity 0.5s, background 0.3s;
-    box-shadow: 0 2px 8px rgba(60,60,60,0.10);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.arrivals-arrow.left {
-    left: 10px;
-}
-
-.arrivals-arrow.right {
-    right: 10px;
-}
-
-.arrivals-arrow:hover {
-    opacity: 1;
-    background: #f3f3f3;
-}
-
 .arrivals-list {
-    flex: 1 1 auto;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    display: flex;
-    gap: 40px;
-    padding: 24px 0;
-    border-radius: 0 0 32px 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 32px;
+    padding: 32px 24px;   
+    width: 100%;
     background: inherit;
-    /* Hide scrollbar for Chrome */
-    scrollbar-width: none;
-}
-.arrivals-list::-webkit-scrollbar {
-    display: none;
-}
-
-.arrivals-list::before,
-.arrivals-list::after {
-    content: "";
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 40px;
-    pointer-events: none;
-    z-index: 1;
-}
-.arrivals-list::before,
-.arrivals-list::after {
-    display: none;
+    overflow: visible;
+    box-sizing: border-box; 
 }
 
 .arrival-item {
-    width: 200px;
-    min-width: 200px;
-    max-width: 200px;
-    background: #FFFFFF;
-    border-radius: 15px;
-    box-shadow: 0 4px 16px rgba(70, 66, 66, 0.162);
-    padding: 20px;
-    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(70, 66, 66, 0.13);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transition: box-shadow 0.3s, transform 0.3s;
-    flex: 0 0 auto;
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    aspect-ratio: 1 / 1;    
+    min-width: 0;           
+    min-height: 0;
+    height: auto;           
 }
+
 .arrival-item:hover {
-    box-shadow: 0 8px 24px rgb(234, 229, 229);
-    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(60,60,60,0.13);
+    transform: scale(1.04) translateY(-8px);
+    z-index: 3;
 }
 
 .arrival-item img {
-    border-radius: 10px;
-    margin-bottom: 10px;
     width: 100%;
     height: auto;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(180,180,180,0.10);
 }
 
 .arrival-item h3 {
-    font-size: 1.1rem;
-    margin: 10px 0 5px 0;
+    font-size: 1.3rem;
+    margin: 12px 0 7px 0;
     font-family: 'Poiret One', sans-serif;
 }
 
 .arrival-item p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #555;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+  .arrivals-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*CartPage*/
+/*Cart Page Style*/
+body {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: transparent;
+    z-index: -1;
+}
+
+.cart-title {
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+    font-size: 2.7rem;
+    margin: 56px 0 36px 0;
+    color: #7b5eea;
+    letter-spacing: 0.12em;
+    text-shadow: 0 4px 32px #b388ff44;
+}
+.cart-container {
+    background: rgba(255,255,255,0.85); /* More transparent */
+    border-radius: 32px;
+    box-shadow: 0 12px 48px 0 rgba(123,94,234,0.13), 0 2px 12px rgba(60,60,60,0.08);
+    padding: 40px 32px 32px 32px;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 36px;
+    background: rgba(245,245,255,0.7);
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(123,94,234,0.07);
+    padding: 20px;
+    transition: box-shadow 0.2s;
+}
+.cart-item:hover {
+    box-shadow: 0 8px 32px rgba(123,94,234,0.13);
+}
+.cart-item-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 16px;
+    margin-right: 32px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(180,180,255,0.10);
+}
+.cart-item-details {
+    flex: 1;
+}
+.cart-item-details h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #3a3a3a;
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 0.04em;
+}
+.cart-item-price {
+    color: #7b5eea;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+.cart-item-qty {
+    margin-bottom: 10px;
+}
+.cart-item-qty label {
+    font-size: 1rem;
+    color: #888;
+}
+.cart-item-qty input {
+    width: 48px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-left: 8px;
+    font-size: 1rem;
+}
+.remove-btn {
+    background: none;
+    border: none;
+    color: #e57373;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: color 0.2s;
+    font-family: 'Poiret One', cursive;
+}
+.remove-btn:hover {
+    color: #b71c1c;
+}
+.cart-summary {
+    border-top: 1px solid #eee;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+.cart-total {
+    font-size: 1.4rem;
+    color: #3a3a3a;
+    font-family: 'Poiret One', cursive;
+}
+.cart-total-price {
+    color: #7b5eea;
+    font-weight: bold;
+    margin-left: 16px;
+    font-size: 1.4rem;
+}
+.checkout-btn {
+    background: linear-gradient(90deg, #7b5eea 60%, #b388ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 14px 40px;
+    font-size: 1.2rem;
+    font-family: 'Poiret One', cursive;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(123,94,234,0.13);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.checkout-btn:hover {
+    background: linear-gradient(90deg, #b388ff 0%, #7b5eea 100%);
+    box-shadow: 0 8px 32px rgba(123,94,234,0.18);
+}
+
+/*anti overflow*/
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/*shoplayout*/
+.shop-main {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.shop-sidebar {
+    flex: 0 0 260px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(123,94,234,0.07);
+    padding: 28px 20px;
+    height: fit-content;
+}
+.shop-sidebar h2 {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    color: #7b5eea;
+    font-family: 'Poiret One', cursive;
+}
+.filter-group {
+    margin-bottom: 18px;
+}
+.filter-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 1rem;
+}
+.apply-btn {
+    background: linear-gradient(90deg, #7b5eea 60%, #b388ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-family: 'Poiret One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.shop-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 28px;
+}
+/*shop Item Layout*/
+.shop-item {
+    background: #fff;
+    border-radius: 18px;
+    border: 1.5px solid #e6e6fa;
+    box-shadow: 0 4px 24px rgba(123,94,234,0.10), 0 1.5px 8px rgba(60,60,60,0.06);
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    aspect-ratio: 2 / 3;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    transition: 
+        box-shadow 0.25s cubic-bezier(0.4,0,0.2,1),
+        transform 0.18s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.18s;
+}
+
+.shop-item img {
+    flex: 1 1 auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0;
+    background: #f8f8ff;
+    box-shadow: none;
+    display: block;
+    min-height: 0;
+}
+
+.shop-item-info {
+    background: linear-gradient(0deg, rgba(30,30,40,0.92) 80%, rgba(255,255,255,0.05) 100%);
+    padding: 18px 12px 16px 12px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 7px;
+}
+
+.shop-item h3 {
+    color: #222;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0 4px;          
+    letter-spacing: 0.04em;
+    text-shadow: none;
+    text-align: left;
+    width: 100%;
+    padding-left: 4px;    
+}
+
+.shop-item p {
+    color: #222;
+    font-weight: bold;
+    margin: 0 0 0 4px;
+    font-size: 0.98rem;         
+    text-shadow: none;
+    text-align: left;
+    width: 100%;
+    padding-left: 4px;           
+}
+
+.shop-item button {
+    background: linear-gradient(180deg, #fff 0%, #6b6a6a 100%);
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 22px;
+    font-family: 'Poiret One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(30,30,40,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+    margin-top: 6px;
+}
+.shop-item button:hover {
+    background: linear-gradient(180deg, #5a5757 0%, #5a5757 100%);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(30,30,40,0.18);
+    transform: translateY(-2px) scale(1.04);
+}
+@media (max-width: 900px) {
+    .shop-main {
+        flex-direction: column;
+    }
+
+    .shop-sidebar {
+        width: 100%;
+        margin-bottom: 32px;
+    }
+}
+
+/* ForHeartIcononShoplayout */
+.shop-item {
+    position: relative; /* Needed for absolute positioning */
+}
+
+.shop-item-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+.heart-btn {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: none;
+    transition: transform 0.15s;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-btn:hover {
+    transform: scale(1.18);
+    background: none;
+}
+
+.heart-btn img {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
 }
