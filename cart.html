@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginarium - Cart</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+        body {
+            background-image: url('./image/addtocart/89314.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            font-family: 'Poiret One', sans-serif;
+        }
+        .cart-title {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar-top">
+            <div class="social-link">
+                <i><img src="./image/twitter.png" alt="" width="30px"></i>
+                <i><img src="./image/facebook.png" alt="" width="28px"></i>
+                <i><img src="./image/instagram.png" alt="" width="28px"></i>
+            </div>
+            <div class="logo">
+                <h5>- WELCOME TO -</h5>
+                <h3>IMAGINARIUM</h3>
+            </div>
+            <div class="icons">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <i class="search-icon">
+                        <img src="./image/search.png" alt="Search" width="28px">
+                    </i>
+                </div>
+                <a href="favorites.html">
+                  <i><img src="./image/heart.png" alt="" width="28px"></i>
+                </a>
+                <a href="cart.html">
+                  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div> <!-- end of .navbar-top -->
+    </div> <!-- end of .container -->
+</header>
+
+<main>
+      <h1 class="cart-title">Your Cart</h1>
+  <div class="cart-container">
+    <!-- Example cart item -->
+    <div class="cart-item">
+      <img src="./image/outfits/starlitgown.png" alt="Starlit Gown" class="cart-item-img">
+      <div class="cart-item-details">
+        <h2>Starlit Gown</h2>
+        <p class="cart-item-price">$120</p>
+        <div class="cart-item-qty">
+          <label>Qty:</label>
+          <input type="number" value="1" min="1">
+        </div>
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+    <!-- Repeat .cart-item for each product -->
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span class="cart-total-price">$120</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+    <!-- Cart content goes here -->
+    <script src="NewArrivalsArrow.js"></script>
+    <script src="search.js"></script>
+    <script src="app.js"></script>
+</main>
+</body>
+</html>
