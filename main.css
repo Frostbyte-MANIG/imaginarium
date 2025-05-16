@@ -593,7 +593,7 @@ html, body {
     border-bottom-right-radius: 18px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start; /* Move content to the left */
     gap: 7px;
 }
 
@@ -602,26 +602,26 @@ html, body {
     font-family: 'Poiret One', cursive;
     font-size: 1.15rem;
     font-weight: 600;
-    margin: 0 0 0 4px;          
+    margin: 0 0 0 4px;           /* Add left margin for space */
     letter-spacing: 0.04em;
     text-shadow: none;
     text-align: left;
     width: 100%;
-    padding-left: 4px;    
+    padding-left: 4px;           /* Add a little padding on the left */
 }
 
 .shop-item p {
     color: #222;
     font-weight: bold;
-    margin: 0 0 0 4px;
-    font-size: 0.98rem;         
+    margin: 0 0 0 4px;           /* Add left margin for space */
+    font-size: 0.98rem;          /* Smaller price text */
     text-shadow: none;
     text-align: left;
     width: 100%;
-    padding-left: 4px;           
+    padding-left: 4px;           /* Add a little padding on the left */
 }
 
-.shop-item button {
+.add-to-cart-btn {
     background: linear-gradient(180deg, #fff 0%, #6b6a6a 100%);
     color: #222;
     border: none;
@@ -634,7 +634,7 @@ html, body {
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
     margin-top: 6px;
 }
-.shop-item button:hover {
+.add-to-cart-btn:hover {
     background: linear-gradient(180deg, #5a5757 0%, #5a5757 100%);
     color: #fff;
     box-shadow: 0 6px 18px rgba(30,30,40,0.18);
@@ -651,7 +651,7 @@ html, body {
     }
 }
 
-/* ForHeartIcononShoplayout */
+/* Heart icon on top right of shop item */
 .shop-item {
     position: relative; /* Needed for absolute positioning */
 }
