@@ -34,3 +34,24 @@ let items = document.querySelectorAll('.slider .item');
         active = active - 1 >= 0 ? active - 1 : active;
         loadShow();
     }
+
+let lastScroll = 0;
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+        header.classList.remove('hide-on-scroll');
+        lastScroll = 0;
+        return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 60) {
+        // Scrolling down
+        header.classList.add('hide-on-scroll');
+    } else {
+        // Scrolling up or not moving
+        header.classList.remove('hide-on-scroll');
+    }
+    lastScroll = currentScroll;
+});
