@@ -48,36 +48,81 @@
     </div> <!-- end of .navbar-top -->
 </div> <!-- end of .container -->
 </header>
-<main class="shop-main">
+<main class="shop-main" style="display: flex; gap: 32px;">
   <div class="shop-sidebar">
     <h2>Filters & Settings</h2>
     <div class="filter-group">
-      <label>Category</label>
-      <select>
-        <option>All</option>
-        <option>Dresses</option>
-        <option>Tops</option>
-        <option>Accessories</option>
-      </select>
-    </div>
+  <label for="category-filter">Category</label>
+  <select id="category-filter" name="category">
+    <option value="">All Categories</option>
+    <option value="seraphic-grace">Seraphic Grace</option>
+    <option value="iridescent-glow">Iridescent Glow</option>
+    <option value="nocturnal-outerwear">Nocturnal Outerwear</option>
+    <option value="midnight-descenders">Midnight Descenders</option>
+    <option value="bandle-city-blessed">Bandle City Blessed</option>
+    <option value="lucid-lavender">Lucid Lavender</option>
+    <option value="pastel-princess">Pastel Princess</option>
+    <option value="scarlets-letter">Scarlets Letter</option>
+    <option value="in-solari-name">In Solari's Name</option>
+    <option value="urban-street-dwellers">Urban Street Dwellers</option>
+  </select>
+</div>
     <div class="filter-group">
       <label>Price Range</label>
       <input type="range" min="0" max="200" value="100">
+      <div style="display:flex; justify-content:space-between; font-size:0.95em;">
+        <span>$0</span><span>$200</span>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label>Sort By</label>
+      <select>
+        <option>Newest</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Best Sellers</option>
+      </select>
     </div>
     <div class="filter-group">
       <label>
         <input type="checkbox"> In Stock Only
       </label>
     </div>
+    <div class="filter-group">
+      <label>
+        <input type="checkbox"> On Sale
+      </label>
+    </div>
     <button class="apply-btn">Apply Filters</button>
   </div>
-  <div class="shop-grid">
+  <div class="shop-content" style="flex:1; display:flex; flex-direction:column;">
+    <div class="shop-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+  <div class="shop-view-toggle" style="position: relative; display: flex; align-items: center; gap: 10px;">
+    <button class="view-btn grid-view active" aria-label="Grid view">
+      &#9632;&#9632;&#9632;
+    </button>
+    <button class="view-btn list-view" aria-label="List view">
+      &#9646;
+    </button>
+    <div class="toggle-indicator"></div>
+  </div>
+  <div class="shop-sort" style="display: flex; align-items: center; gap: 8px;">
+    <label for="sort-select" style="font-size: 1rem; color: #444;">Sort By</label>
+    <select id="sort-select" style="padding: 6px 12px; border-radius: 6px; border: 1.5px solid #e6e6fa;">
+      <option>Newest</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+      <option>Best Sellers</option>
+    </select>
+  </div>
+</div>
+    <div class="shop-grid">
   <div class="shop-item">
   <div class="shop-item-heart">
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -91,7 +136,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -105,7 +150,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -119,7 +164,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -133,7 +178,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -147,7 +192,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -161,7 +206,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -175,7 +220,7 @@
   <button class="heart-btn" aria-label="Add to favorites">
     <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#e57373" stroke-width="2" fill="none"/>
+    stroke="#232323" stroke-width="2" fill="none"/>
 </svg>
   </button>
 </div>
@@ -192,9 +237,62 @@ document.querySelectorAll('.heart-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     const svg = btn.querySelector('.heart-shape');
     const isFilled = btn.classList.toggle('favorited');
-    svg.setAttribute('fill', isFilled ? '#e57373' : 'none');
+    svg.setAttribute('fill', isFilled ? '#232323' : 'none');
   });
 });
 </script>
+<script>
+const gridBtn = document.querySelector('.grid-view');
+const listBtn = document.querySelector('.list-view');
+const shopGrid = document.querySelector('.shop-grid');
+const indicator = document.querySelector('.toggle-indicator');
+
+function moveIndicator() {
+  if (gridBtn.classList.contains('active')) {
+    indicator.style.transform = 'translateX(0)';
+  } else {
+    indicator.style.transform = 'translateX(74px)'; // 64px button + 10px gap
+  }
+}
+
+gridBtn.addEventListener('click', () => {
+  gridBtn.classList.add('active');
+  listBtn.classList.remove('active');
+  shopGrid.classList.remove('list-view');
+  moveIndicator();
+});
+listBtn.addEventListener('click', () => {
+  listBtn.classList.add('active');
+  gridBtn.classList.remove('active');
+  shopGrid.classList.add('list-view');
+  moveIndicator();
+});
+
+moveIndicator();
+</script>
+
+<script>
+let lastScroll = 0;
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+        header.classList.remove('hide-on-scroll');
+        lastScroll = 0;
+        return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 60) {
+        // Scrolling down
+        header.classList.add('hide-on-scroll');
+    } else {
+        // Scrolling up or not moving
+        header.classList.remove('hide-on-scroll');
+    }
+    lastScroll = currentScroll;
+});
+</script>
+
 </body>
 </html>
