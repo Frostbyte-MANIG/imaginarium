@@ -1,0 +1,266 @@
+:root {
+    --accent: #7b5eea;
+    --bg-gradient: linear-gradient(120deg, #4b2fae 0%, #1a1333 100%);
+}
+.category-hero {
+    background: var(--bg-gradient, linear-gradient(120deg, #4b2fae 0%, #1a1333 100%));
+    padding: 60px 0 40px 0;
+    text-align: center;
+    position: relative;
+}
+.back-btn {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #e0e0e0 0%, #fff 100%);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 2rem;    
+    text-decoration: none;
+    box-shadow: 0 2px 12px #0002;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    border: none;
+    font-weight: bold;
+    line-height: 1;
+    padding-left: 2px;
+}
+.back-btn:hover {
+    background: linear-gradient(135deg, #fff 0%, #bdbdbd 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px var(--accent)55;
+}
+@media (max-width: 700px) {
+    .back-btn {
+        top: 16px;
+        left: 12px;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+}
+.category-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.category-image {
+    width: 340px;
+    height: 220px;
+    border-radius: 64px 64px 80px 80px/80px 80px 64px 64px;
+    object-fit: cover;
+    box-shadow:
+        0 12px 48px var(--accent),
+        0 4px 32px #0007,
+        0 0 0 8px rgba(255,255,255,0.18);
+    border: 6px solid rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(6px);
+    transition:
+        width 0.5s cubic-bezier(.4,2,.3,1),
+        height 0.5s cubic-bezier(.4,2,.3,1),
+        border-radius 0.5s cubic-bezier(.4,2,.3,1),
+        box-shadow 0.5s cubic-bezier(.4,2,.3,1);
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+}
+.category-image:hover {
+    width: 260px;
+    height: 390px;
+    border-radius: 32px;
+    object-fit: cover;
+    box-shadow:
+        0 32px 96px var(--accent),
+        0 8px 48px #0009,
+        0 0 0 16px rgba(255,255,255,0.22);
+}
+.category-hero h1,
+.category-hero p {
+    color: #fff;
+    text-shadow:
+        0 0 12px var(--accent),
+        0 0 24px var(--accent),
+        0 0 32px var(--accent);
+}
+.category-hero h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+}
+.category-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 36px;
+  padding: 40px 10vw 60px 10vw;
+  background: #f8f8ff;
+}
+
+.product-card.long-portrait {
+  background: #fff;
+  border-radius: 20px;
+  border: 1.5px solid #e6e6ef;
+  box-shadow: 0 4px 24px #0001, 0 1.5px 8px #7b5eea11;
+  padding: 0 0 18px 0;
+  text-align: left;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.product-card.long-portrait:hover {
+  box-shadow: 0 8px 32px var(--accent, #b388ff33), 0 2px 16px #7b5eea22;
+  border-color: var(--accent, #b388ff);
+  transform: translateY(-8px) scale(1.03);
+  z-index: 2;
+}
+
+.product-img-portrait {
+  width: 100%;
+  aspect-ratio: 3 / 7;
+  background: #f7f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-img-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+}
+
+.product-card-content {
+  padding: 18px 18px 0 18px;
+  text-align: center;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product-card-content h3 {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.15rem;
+  margin: 0 0 8px 0;
+  color: #23232a;
+}
+
+.product-card-content p {
+  font-size: 0.98rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.product-card-content .price {
+  font-size: 1.08rem;
+  color: #cccccc;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.product-card button {
+    background: linear-gradient(90deg, var(--accent) 60%, #b388ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 22px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+    margin-top: 10px;
+    align-self: flex-end;
+}
+.product-card button:hover {
+    background: linear-gradient(90deg, #b388ff 0%, var(--accent) 100%);
+}
+@media (max-width: 700px) {
+    .category-hero {
+        padding: 40px 0 20px 0;
+    }
+    .product-list {
+        padding: 24px 4vw 40px 4vw;
+        gap: 18px;
+    }
+}
+
+/* Back Button Style */
+.dreamy-back-btn {
+  margin-bottom: 32px;
+  background: rgba(255,255,255,0.13);
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.15rem;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  border-radius: 18px;
+  padding: 10px 28px 10px 18px;
+  box-shadow: 0 2px 12px #2222;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+  letter-spacing: 0.08em;
+}
+.dreamy-back-btn:hover, .dreamy-back-btn:focus {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+  box-shadow: 0 4px 24px #fff2;
+}
+.back-arrow {
+  font-size: 1.5em;
+  margin-right: 4px;
+  filter: drop-shadow(0 1px 4px #fff8);
+  transition: color 0.2s;
+}
+.back-text {
+  font-size: 1.08em;
+}
+
+/* Add to Cart */
+.add-to-cart-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(180deg, var(--accent, #7b5eea) 0%, #ffe066 100%);
+  color: #23232a;
+  font-family: 'Poiret One', cursive;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0 0 20px 20px;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 2px 12px #b388ff22;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(180deg, #ffe066 0%, var(--accent, #7b5eea) 100%);
+  color: #fff;
+}

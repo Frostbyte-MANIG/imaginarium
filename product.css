@@ -1,0 +1,42 @@
+/*product*/
+.size-btn {
+  padding: 10px 26px;
+  font-size: 1.18rem;
+  border-radius: 12px;
+  border: 2px solid #b5aaff;
+  background: rgba(255,255,255,0.13);
+  color: #b5aaff;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(120,90,180,0.06);
+  transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.size-btn.selected,
+.size-btn:hover {
+  background: linear-gradient(90deg, #fff 0%, #b5aaff 100%);
+  color: #232323;
+  border-color: #fff;
+  box-shadow: 0 4px 16px #b5aaff33;
+}
+
+/*heartbtn*/
+.heart-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+  display: flex;
+  align-items: center;
+}
+.heart-btn:active {
+  transform: scale(1.15);
+}
+.heart-btn .heart-shape {
+  transition: fill 0.2s, stroke 0.2s;
+}
+.heart-btn.favorited .heart-shape {
+  fill: #fff;
+  stroke: #fff;
+}

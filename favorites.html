@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imaginarium - Favorites</title>
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="header.css">
+  <meta charset="UTF-8">
+  <title>My Wishlist - Imaginarium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="productpage.css">
+  <link rel="stylesheet" href="addtocart.css">
+  <link rel="stylesheet" href="favorites.css">
 </head>
+
 <body>
 <header>
     <div class="container">
@@ -25,14 +29,15 @@
             <div class="icons">
                 <div class="search-container">
                     <input type="text" class="search-input" placeholder="Search...">
-                    <i class="search-icon">
-                        <img src="./image/search.png" alt="Search" width="28px">
-                    </i>
+                    <div class="search-suggestions"></div>
                 </div>
+                <i class="search-icon">
+                    <img src="./image/search.png" alt="Search" width="24">
+                </i>
                 <a href="favorites.html">
                   <i><img src="./image/heart.png" alt="" width="28px"></i>
                 </a>
-                <a href="cart.html">
+                <a href="#" class="cart-icon-link">
                   <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
                 </a>
             </div>
@@ -40,21 +45,92 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shoplayout.html">Shop</a></li>
-                    <li><a href="#">Collections</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="categorieslist.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-        </div> <!-- end of .navbar-top -->
-    </div> <!-- end of .container -->
+        </div>
+    </div>
 </header>
 
-<main>
-    <h1>Your Favorites</h1>
-    <!-- Favorite items will go here -->
-    <script src="NewArrivalsArrow.js"></script>
-    <script src="search.js"></script>
-    <script src="app.js"></script>
-</main>
+  <main class="wishlist-main">
+    <button onclick="history.back()" class="dreamy-back-btn" type="button">
+    <span class="back-arrow">&lt;</span>
+    <span class="back-text">Back</span>
+    </button>
+    <h1 class="wishlist-title">- My Favorites -</h1>
+    <div id="wishlist-grid" class="wishlist-grid"></div>
+    <div id="wishlist-empty" class="wishlist-empty" style="display:none;">Your wishlist is empty. Start adding your favorite items!</div>
+  </main>
+
+
+<script src="product-data.js"></script>
+<script src="app.js"></script>
+<script src="search.js"></script>
+<script src="app.js"></script>
+<script src="addtocart.js"></script>
+
+  <script>
+    // --- Wishlist Logic ---
+    // Use localStorage for persistence
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem('wishlist') || '[]');
+    }
+    function saveWishlist(items) {
+      localStorage.setItem('wishlist', JSON.stringify(items));
+    }
+    function removeFromWishlist(id) {
+      let items = getWishlist();
+      items = items.filter(item => item.id !== id);
+      saveWishlist(items);
+      renderWishlist();
+    }
+    function addWishlistToCart(id) {
+      const items = getWishlist();
+      const item = items.find(i => i.id === id);
+      if (item) {
+        // Use your global addToCart function
+        window.addToCart(item.name, item.price, 1, item.img);
+      }
+    }
+    function renderWishlist() {
+      const grid = document.getElementById('wishlist-grid');
+      const emptyMsg = document.getElementById('wishlist-empty');
+      const items = getWishlist();
+      grid.innerHTML = '';
+      if (!items.length) {
+        emptyMsg.style.display = '';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+      for (const item of items) {
+        const card = document.createElement('div');
+        card.className = 'wishlist-card';
+        card.innerHTML = `
+          <img src="${item.img || './image/outfits/starlitgown.png'}" alt="${item.name}" class="wishlist-img">
+          <div class="wishlist-name">${item.name}</div>
+          <div class="wishlist-price">$${item.price}</div>
+          <div class="wishlist-actions">
+            <button class="wishlist-addcart">Add to Cart</button>
+            <button class="wishlist-remove">Remove</button>
+          </div>
+        `;
+        card.querySelector('.wishlist-remove').onclick = () => removeFromWishlist(item.id);
+        card.querySelector('.wishlist-addcart').onclick = () => addWishlistToCart(item.id);
+        grid.appendChild(card);
+      }
+    }
+    // --- Allow adding to wishlist from product pages ---
+    window.addToWishlist = function({id, name, price, img}) {
+      let items = getWishlist();
+      if (!items.find(i => i.id === id)) {
+        items.push({id, name, price, img});
+        saveWishlist(items);
+      }
+    };
+    // --- Render on load ---
+    renderWishlist();
+  </script>
 </body>
 </html>

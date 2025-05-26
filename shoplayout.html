@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imaginarium</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css"> <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="addtocart.css">
+<style>
+.shop-item .desc {
+  font-weight: normal;
+  font-size: 0.97em;
+  color: #444;
+  margin: 6px 0 2px 0;
+}
+.shop-item .price {
+  font-size: 0.95em;
+  color: #666;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+</style>
 </head>
 <body>
     
@@ -23,50 +39,70 @@
                 <h3>IMAGINARIUM</h3>
             </div>
             <div class="icons">
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <i class="search-icon">
-            <img src="./image/search.png" alt="Search" width="28px">
-        </i>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <div class="search-suggestions"></div>
+                </div>
+                <i class="search-icon">
+                    <img src="./image/search.png" alt="Search" width="24">
+                </i>
+                <a href="favorites.html">
+                  <i><img src="./image/heart.png" alt="" width="28px"></i>
+                </a>
+                <a href="#" class="cart-icon-link">
+                  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shoplayout.html">Shop</a></li>
+                    <li><a href="categorieslist.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <a href="favorites.html">
-  <i><img src="./image/heart.png" alt="" width="28px"></i>
-</a>
-    <a href="cart.html">
-  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
-</a>
-</div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shoplayout.html">Shop</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </div> <!-- end of .navbar-top -->
-</div> <!-- end of .container -->
 </header>
+
+<!-- Cart Drawer Markup -->
+<div id="cart-overlay"></div>
+<aside id="cart-drawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            Total: <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+</aside>
+
 <main class="shop-main" style="display: flex; gap: 32px;">
   <div class="shop-sidebar">
     <h2>Filters & Settings</h2>
     <div class="filter-group">
-  <label for="category-filter">Category</label>
-  <select id="category-filter" name="category">
-    <option value="">All Categories</option>
-    <option value="seraphic-grace">Seraphic Grace</option>
-    <option value="iridescent-glow">Iridescent Glow</option>
-    <option value="nocturnal-outerwear">Nocturnal Outerwear</option>
-    <option value="midnight-descenders">Midnight Descenders</option>
-    <option value="bandle-city-blessed">Bandle City Blessed</option>
-    <option value="lucid-lavender">Lucid Lavender</option>
-    <option value="pastel-princess">Pastel Princess</option>
-    <option value="scarlets-letter">Scarlets Letter</option>
-    <option value="in-solari-name">In Solari's Name</option>
-    <option value="urban-street-dwellers">Urban Street Dwellers</option>
-  </select>
-</div>
+      <label for="category-filter">Category</label>
+      <select id="category-filter" name="category">
+        <option value="">All Categories</option>
+        <option value="seraphic-grace">Seraphic Grace</option>
+        <option value="iridescent-glow">Iridescent Glow</option>
+        <option value="star-guardians">Star Guardians</option>
+        <option value="midnight-descenders">Midnight Descenders</option>
+        <option value="bandle-city-blessed">Bandle City Blessed</option>
+        <option value="lucid-lavender">Lucid Lavender</option>
+        <option value="pastel-princess">Pastel Princess</option>
+        <option value="scarletts-letter">Scarletts Letter</option>
+        <option value="in-solari's-name">In Solari's Name</option>
+        <option value="urban-street-dwellers">Urban Street Dwellers</option>
+      </select>
+    </div>
     <div class="filter-group">
       <label>Price Range</label>
       <input type="range" min="0" max="200" value="100">
@@ -76,12 +112,12 @@
     </div>
     <div class="filter-group">
       <label>Sort By</label>
-      <select>
-        <option>Newest</option>
-        <option>Price: Low to High</option>
-        <option>Price: High to Low</option>
-        <option>Best Sellers</option>
-      </select>
+        <select id="sort-select-sidebar">
+          <option>Newest</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Best Sellers</option>
+        </select>
     </div>
     <div class="filter-group">
       <label>
@@ -97,150 +133,33 @@
   </div>
   <div class="shop-content" style="flex:1; display:flex; flex-direction:column;">
     <div class="shop-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-  <div class="shop-view-toggle" style="position: relative; display: flex; align-items: center; gap: 10px;">
-    <button class="view-btn grid-view active" aria-label="Grid view">
-      &#9632;&#9632;&#9632;
-    </button>
-    <button class="view-btn list-view" aria-label="List view">
-      &#9646;
-    </button>
-    <div class="toggle-indicator"></div>
+      <div class="shop-view-toggle" style="position: relative; display: flex; align-items: center; gap: 10px;">
+        <button class="view-btn grid-view active" aria-label="Grid view">
+          &#9632;&#9632;&#9632;
+        </button>
+        <button class="view-btn list-view" aria-label="List view">
+          &#9646;
+        </button>
+        <div class="toggle-indicator"></div>
+      </div>
+      <div class="shop-sort" style="display: flex; align-items: center; gap: 8px;">
+        <label for="sort-select" style="font-size: 1rem; color: #444;">Sort By</label>
+        <select id="sort-select-header" style="padding: 6px 12px; border-radius: 6px; border: 1.5px solid #e6e6fa;">
+          <option>Newest</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Best Sellers</option>
+        </select>
+      </div>
+    </div>
+    <div class="shop-grid"></div>
+<div id="shop-pagination" style="display:flex; justify-content:center; gap:16px; margin:32px 0;"></div>
+
+
+    </div>
   </div>
-  <div class="shop-sort" style="display: flex; align-items: center; gap: 8px;">
-    <label for="sort-select" style="font-size: 1rem; color: #444;">Sort By</label>
-    <select id="sort-select" style="padding: 6px 12px; border-radius: 6px; border: 1.5px solid #e6e6fa;">
-      <option>Newest</option>
-      <option>Price: Low to High</option>
-      <option>Price: High to Low</option>
-      <option>Best Sellers</option>
-    </select>
-  </div>
-</div>
-    <div class="shop-grid">
-  <div class="shop-item">
-  <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-  <img src="./image/outfits/starlitgown.png" alt="Starlit Gown">
-  <h3>Starlit Gown</h3>
-  <p>$120</p>
-  <button class="add-to-cart-btn">Add to Cart</button>
-</div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Celestial Cape">
-    <h3>Celestial Cape</h3>
-    <p>$95</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Moonlight Dress">
-    <h3>Moonlight Dress</h3>
-    <p>$110</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Starry Veil">
-    <h3>Starry Veil</h3>
-    <p>$60</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Fairy Wing Top">
-    <h3>Fairy Wing Top</h3>
-    <p>$75</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Enchanted Skirt">
-    <h3>Enchanted Skirt</h3>
-    <p>$85</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Dreamer Scarf">
-    <h3>Dreamer Scarf</h3>
-    <p>$35</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    <div class="shop-item-heart">
-  <button class="heart-btn" aria-label="Add to favorites">
-    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
-    stroke="#232323" stroke-width="2" fill="none"/>
-</svg>
-  </button>
-</div>
-    <img src="./image/outfits/celestialcape.png" alt="Aurora Crown">
-    <h3>Aurora Crown</h3>
-    <p>$55</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
-</div>
 </main>
 
-<script>
-document.querySelectorAll('.heart-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const svg = btn.querySelector('.heart-shape');
-    const isFilled = btn.classList.toggle('favorited');
-    svg.setAttribute('fill', isFilled ? '#232323' : 'none');
-  });
-});
-</script>
 <script>
 const gridBtn = document.querySelector('.grid-view');
 const listBtn = document.querySelector('.list-view');
@@ -251,7 +170,7 @@ function moveIndicator() {
   if (gridBtn.classList.contains('active')) {
     indicator.style.transform = 'translateX(0)';
   } else {
-    indicator.style.transform = 'translateX(74px)'; // 64px button + 10px gap
+    indicator.style.transform = 'translateX(74px)';
   }
 }
 
@@ -284,15 +203,636 @@ window.addEventListener('scroll', () => {
     }
 
     if (currentScroll > lastScroll && currentScroll > 60) {
-        // Scrolling down
         header.classList.add('hide-on-scroll');
     } else {
-        // Scrolling up or not moving
         header.classList.remove('hide-on-scroll');
     }
     lastScroll = currentScroll;
 });
 </script>
+<script src="search.js"></script>
+<script src="favorites.js"></script>
+<script src="addtocart.js"></script>
+<!--<script>
+// Product page navigation with name, price, desc
+document.querySelectorAll('.shop-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    if (e.target.closest('button') || e.target.closest('.heart-btn')) return;
+    const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+    const price = item.querySelector('.price')?.textContent?.replace(/[^0-9.]/g, '') || '0';
+    const desc = item.querySelector('.desc')?.textContent?.trim() || '';
+    window.location.href = `product.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&desc=${encodeURIComponent(desc)}`;
+  });
+});
 
+// Add to Cart logic: get name and price from DOM
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const item = btn.closest('.shop-item');
+    const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+    const priceText = item.querySelector('.price')?.textContent?.replace(/[^0-9.]/g, '') || '0';
+    const price = parseFloat(priceText) || 0;
+    addToCart(name, price);
+  });
+});
+
+// For favorite (heart click)
+document.querySelectorAll('.shop-item .heart-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const item = btn.closest('.shop-item');
+    const svg = btn.querySelector('.heart-shape');
+    const isFilled = btn.classList.toggle('favorited');
+    svg.setAttribute('fill', isFilled ? '#b5aaff' : 'none');
+    svg.setAttribute('stroke', isFilled ? '#fff' : '#fff'); // <-- White outline always
+    if (isFilled) {
+      // Add to wishlist
+      window.addToWishlist({
+        id: item.dataset.id,
+        name: item.dataset.name,
+        price: item.dataset.price,
+        img: item.dataset.img
+      });
+    } else {
+      // Remove from wishlist
+      let items = JSON.parse(localStorage.getItem('wishlist') || '[]');
+      items = items.filter(i => i.id !== item.dataset.id);
+      localStorage.setItem('wishlist', JSON.stringify(items));
+    }
+  });
+});
+
+// On page load, fill hearts for items in wishlist
+document.addEventListener('DOMContentLoaded', function() {
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  document.querySelectorAll('.shop-item').forEach(item => {
+    const heartBtn = item.querySelector('.heart-btn');
+    const heartShape = item.querySelector('.heart-shape');
+    if (wishlist.find(i => i.id === item.dataset.id)) {
+      heartBtn.classList.add('favorited');
+      heartShape.setAttribute('fill', '#b5aaff');
+      heartShape.setAttribute('stroke', '#fff');
+    } else {
+      heartBtn.classList.remove('favorited');
+      heartShape.setAttribute('fill', 'none');
+      heartShape.setAttribute('stroke', '#fff'); // <-- White outline when not filled
+    }
+  });
+});
+</script>-->
+
+<!--Next Page Function-->
+<script>
+const ITEMS_PER_ROW = 3;
+const ROWS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = ITEMS_PER_ROW * ROWS_PER_PAGE;
+
+const productList = [
+  // Seraphic Grace
+  {
+    name: "Destined Fairness",
+    category: "Seraphic Grace",
+    img: "Destined Fairness.png",
+    price: 120,
+    desc: "A dreamy gown with shimmering accents."
+  },
+  {
+    name: "Gale Seeker",
+    category: "Seraphic Grace",
+    img: "Gale Seeker.png",
+    price: 95,
+    desc: "Lightweight cape with cosmic embroidery."
+  },
+  {
+    name: "Isolde's Promise",
+    category: "Seraphic Grace",
+    img: "Isolde’s Promise.png",
+    price: 70,
+    desc: "Boots for walking among the stars."
+  },
+  {
+    name: "Veiled Faithful",
+    category: "Seraphic Grace",
+    img: "Veiled Faithful.png",
+    price: 105,
+    desc: "A flowing robe with sunset hues."
+  },
+
+  // Iridescent Glow
+  {
+    name: "Elegance",
+    category: "Iridescent Glow",
+    img: "Elegance.png",
+    price: 130,
+    desc: "A shimmering cloak with crystal details."
+  },
+  {
+    name: "Eternity",
+    category: "Iridescent Glow",
+    img: "Eternity.png",
+    price: 65,
+    desc: "Soft blouse in a gentle lavender shade."
+  },
+  {
+    name: "Resplendence",
+    category: "Iridescent Glow",
+    img: "Resplendence.png",
+    price: 140,
+    desc: "A sleek jacket for midnight adventures."
+  },
+  {
+    name: "Transparency",
+    category: "Iridescent Glow",
+    img: "Transparency.png",
+    price: 30,
+    desc: "A soft beret in pastel tones."
+  },
+
+  // Midnight Descenders
+  {
+    name: "Cosmic Cascade",
+    category: "Midnight Descenders",
+    img: "Cosmic Cascade.png",
+    price: 25,
+    desc: "Elegant gloves in a deep scarlet shade."
+  },
+  {
+    name: "Deep Sea Voyager",
+    category: "Midnight Descenders",
+    img: "Deep Sea Voyager.png",
+    price: 40,
+    desc: "A scarf that shines with solar warmth."
+  },
+  {
+    name: "Starshaper",
+    category: "Midnight Descenders",
+    img: "Starshaper.png",
+    price: 90,
+    desc: "Trendy jacket for city nights."
+  },
+  {
+    name: "Twilight Forager",
+    category: "Midnight Descenders",
+    img: "Twilight Forager.png",
+    price: 28,
+    desc: "A playful hat blessed by Bandle City."
+  },
+
+  // Bandle City Blessed
+  {
+    name: "Mushroom Mage",
+    category: "Bandle City Blessed",
+    img: "Mushroom Mage.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Red Riding Annie",
+    category: "Bandle City Blessed",
+    img: "Red Riding Annie.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Shrooglet's Shroomcap",
+    category: "Bandle City Blessed",
+    img: "Shrooglet's Shroomcap.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Woodland Skipper",
+    category: "Bandle City Blessed",
+    img: "Woodland Skipper.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // Lucid Lavender
+  {
+    name: "Eliza's Elegance",
+    category: "Lucid Lavender",
+    img: "Eliza's Elegance.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Lady Luck in Lavender",
+    category: "Lucid Lavender",
+    img: "Lady Luck in Lavender.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Magister Magician",
+    category: "Lucid Lavender",
+    img: "Magister Magician.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Malevolent Maid",
+    category: "Lucid Lavender",
+    img: "Malevolent Maid.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // Pastel Princess
+  {
+    name: "Cuddle Core",
+    category: "Pastel Princess",
+    img: "Cuddle Core.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Gentle Heartbreaker",
+    category: "Pastel Princess",
+    img: "Gentle Heartbreaker.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Jolly Jumpers",
+    category: "Pastel Princess",
+    img: "Jolly Jumpers.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Strawberry Milk",
+    category: "Pastel Princess",
+    img: "Strawberry Milk.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // Scarlett's Letter
+  {
+    name: "Bloodletter's Scholar",
+    category: "Scarletts Letter",
+    img: "Bloodletter's Scholar.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Cranberry Pinafore",
+    category: "Scarletts Letter",
+    img: "Cranberry Pinafore.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Fair Crimson Lady",
+    category: "Scarletts Letter",
+    img: "Fair Crimson Lady.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Sangria Deaconess",
+    category: "Scarletts Letter",
+    img: "Sangria Deaconess.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // In Solari's Name
+  {
+    name: "Kiongozi The Flaming God of War",
+    category: "In Solari's Name",
+    img: "Kiongozi The Flaming God of War.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Messenger of Rakkor",
+    category: "In Solari's Name",
+    img: "Messenger of Rakkor.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "The Radiant Dawn",
+    category: "In Solari's Name",
+    img: "The Radiant Dawn.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Zenith Raydancer",
+    category: "In Solari's Name",
+    img: "Zenith Raydancer.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // Urban Street Dwellers
+  {
+    name: "Magatsukami no Kage",
+    category: "Urban Street Dwellers",
+    img: "Magatsukami no Kage.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Rojiura ni Hisomu Yurebito",
+    category: "Urban Street Dwellers",
+    img: "Rojiura ni Hisomu Yurebito.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "URBAN: Cypressus Custos",
+    category: "Urban Street Dwellers",
+    img: "URBAN Cypressus Custos.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "URBAN: Divina Vulpes",
+    category: "Urban Street Dwellers",
+    img: "URBAN Divina Vulpes.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+
+  // Star Guardians
+  {
+    name: "Daughter of the Stars",
+    category: "Star Guardians",
+    img: "Daughter of the Stars.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Rebellious Star",
+    category: "Star Guardians",
+    img: "Rebellious Star.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Star-studded Fox",
+    category: "Star Guardians",
+    img: "Star-studded Fox.png",
+    price: 48,
+    desc: "Shorts that glow in the moonlight."
+  },
+  {
+    name: "Starry-eyed Songstress",
+    category: "Star Guardians",
+    img: "Starry-eyed Songstress.png",
+    price: 48,
+    desc: "This delightful pinafore dress layers a vibrant red tartan with crisp white and charming details."
+  }
+];
+
+let currentPage = 1;
+
+function renderShopGridPage(page) {
+  const grid = document.querySelector('.shop-grid');
+  grid.innerHTML = '';
+  const filteredProducts = getFilteredSortedProducts();
+  const start = (page - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const items = filteredProducts.slice(start, end);
+
+  items.forEach(product => {
+    const item = document.createElement('div');
+    item.className = 'shop-item';
+    item.innerHTML = `
+      <div class="shop-item-heart">
+        <button class="heart-btn" aria-label="Add to favorites">
+          <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
+              stroke="#232323" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+      </div>
+      <img src="image/products/${product.category}/${product.img}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p class="desc">${product.desc}</p>
+      <p class="price">$${product.price}</p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    `;
+    grid.appendChild(item);
+  });
+
+  // --- Attach event listeners after rendering ---
+  // Product page navigation
+  grid.querySelectorAll('.shop-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (e.target.closest('button') || e.target.closest('.heart-btn')) return;
+      const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+      const price = item.querySelector('.price')?.textContent?.replace(/[^0-9.]/g, '') || '0';
+      const desc = item.querySelector('.desc')?.textContent?.trim() || '';
+      const img = item.querySelector('img')?.getAttribute('src')?.split('/').pop() || '';
+      const category = item.querySelector('img')?.getAttribute('src')?.split('/')[2] || '';
+      window.location.href = `product.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&desc=${encodeURIComponent(desc)}&img=${encodeURIComponent(img)}&category=${encodeURIComponent(category)}`;
+    });
+  });
+
+  // Add to Cart logic
+  grid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const item = btn.closest('.shop-item');
+      const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+      const priceText = item.querySelector('.price')?.textContent?.replace(/[^0-9.]/g, '') || '0';
+      const price = parseFloat(priceText) || 0;
+      if (typeof addToCart === "function") addToCart(name, price);
+      // Optionally show a message or animation here
+    });
+  });
+
+  // Heart (favorite) logic
+  grid.querySelectorAll('.shop-item .heart-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const item = btn.closest('.shop-item');
+      const svg = btn.querySelector('.heart-shape');
+      const isFilled = btn.classList.toggle('favorited');
+      svg.setAttribute('fill', isFilled ? '#b5aaff' : 'none');
+      svg.setAttribute('stroke', isFilled ? '#fff' : '#fff');
+      const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+      const price = item.querySelector('.price')?.textContent?.replace(/[^0-9.]/g, '') || '0';
+      const img = item.querySelector('img')?.getAttribute('src') || '';
+      if (isFilled) {
+        // Add to wishlist
+        let items = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        items.push({ name, price, img });
+        localStorage.setItem('wishlist', JSON.stringify(items));
+      } else {
+        // Remove from wishlist
+        let items = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        items = items.filter(i => i.name !== name);
+        localStorage.setItem('wishlist', JSON.stringify(items));
+      }
+    });
+  });
+
+  // Fill hearts for items in wishlist
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  grid.querySelectorAll('.shop-item').forEach(item => {
+    const heartBtn = item.querySelector('.heart-btn');
+    const heartShape = item.querySelector('.heart-shape');
+    const name = item.querySelector('h3')?.textContent?.trim() || 'Product';
+    if (wishlist.find(i => i.name === name)) {
+      heartBtn.classList.add('favorited');
+      heartShape.setAttribute('fill', '#b5aaff');
+      heartShape.setAttribute('stroke', '#fff');
+    } else {
+      heartBtn.classList.remove('favorited');
+      heartShape.setAttribute('fill', 'none');
+      heartShape.setAttribute('stroke', '#fff');
+    }
+  });
+
+  renderPagination(page, filteredProducts.length);
+}
+
+/* function renderPagination(page) {
+  const totalPages = Math.ceil(productList.length / ITEMS_PER_PAGE);
+  const pagination = document.getElementById('shop-pagination');
+  pagination.innerHTML = '';
+
+  if (page > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'shop-pagination-btn';
+    prevBtn.innerHTML = `<span class="arrow" style="margin-right:8px;">&lt;</span> Previous`;
+    prevBtn.onclick = () => {
+      currentPage--;
+      renderShopGridPage(currentPage);
+    };
+    pagination.appendChild(prevBtn);
+  }
+
+  const pageInfo = document.createElement('span');
+  pageInfo.style.cssText = "font-size:1.08em;font-family:'Poiret One',cursive;font-weight:600;letter-spacing:0.04em;color:#444;margin:0 10px;";
+  pageInfo.textContent = `Page ${page} of ${totalPages}`;
+  pagination.appendChild(pageInfo);
+
+  if (page < totalPages) {
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'shop-pagination-btn';
+    nextBtn.innerHTML = `Next <span class="arrow" style="margin-left:8px;">&gt;</span>`;
+    nextBtn.onclick = () => {
+      currentPage++;
+      renderShopGridPage(currentPage);
+    };
+    pagination.appendChild(nextBtn);
+  }
+} */
+
+// --- FILTER STATE ---
+let filterState = {
+  category: "",
+  priceMin: 0,
+  priceMax: 200,
+  sort: "Newest"
+};
+
+// --- FILTER HANDLERS ---
+document.getElementById('category-filter').addEventListener('change', function() {
+  filterState.category = this.value;
+  renderShopGridPage(1);
+});
+
+const priceRange = document.querySelector('.filter-group input[type="range"]');
+if (priceRange) {
+  priceRange.addEventListener('input', function() {
+    filterState.priceMax = parseInt(this.value, 10);
+    renderShopGridPage(1);
+  });
+}
+
+// --- FILTERED & SORTED PRODUCTS ---
+function getFilteredSortedProducts() {
+  let filtered = productList.filter(p => {
+    // Category filter
+    if (filterState.category && p.category.replace(/\s+/g, '-').toLowerCase() !== filterState.category) return false;
+    // Price filter
+    if (p.price > filterState.priceMax) return false;
+    return true;
+  });
+
+  // Sorting
+  if (filterState.sort === "Price: Low to High") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (filterState.sort === "Price: High to Low") {
+    filtered.sort((a, b) => b.price - a.price);
+  } // "Newest" and "Best Sellers" can be handled as needed
+
+  return filtered;
+}
+
+// --- UPDATE renderPagination TO USE FILTERED PRODUCTS COUNT ---
+function renderPagination(page, totalItems) {
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const pagination = document.getElementById('shop-pagination');
+  pagination.innerHTML = '';
+
+  if (page > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'shop-pagination-btn';
+    prevBtn.innerHTML = `<span class="arrow" style="margin-right:8px;">&lt;</span> Previous`;
+    prevBtn.onclick = () => {
+      currentPage--;
+      renderShopGridPage(currentPage);
+    };
+    pagination.appendChild(prevBtn);
+  }
+
+  const pageInfo = document.createElement('span');
+  pageInfo.style.cssText = "font-size:1.08em;font-family:'Poiret One',cursive;font-weight:600;letter-spacing:0.04em;color:#444;margin:0 10px;";
+  pageInfo.textContent = `Page ${page} of ${totalPages}`;
+  pagination.appendChild(pageInfo);
+
+  if (page < totalPages) {
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'shop-pagination-btn';
+    nextBtn.innerHTML = `Next <span class="arrow" style="margin-left:8px;">&gt;</span>`;
+    nextBtn.onclick = () => {
+      currentPage++;
+      renderShopGridPage(currentPage);
+    };
+    pagination.appendChild(nextBtn);
+  }
+}
+
+
+const sortSidebar = document.getElementById('sort-select-sidebar');
+const sortHeader = document.getElementById('sort-select-header');
+
+// Synchronize both selects and update sorting
+function syncSortSelects(value) {
+  sortSidebar.value = value;
+  sortHeader.value = value;
+  filterState.sort = value;
+  renderShopGridPage(1);
+}
+
+sortSidebar.addEventListener('change', function() {
+  syncSortSelects(this.value);
+});
+sortHeader.addEventListener('change', function() {
+  syncSortSelects(this.value);
+});
+
+// On page load, keep both selects in sync with filterState
+document.addEventListener('DOMContentLoaded', () => {
+  sortSidebar.value = filterState.sort;
+  sortHeader.value = filterState.sort;
+  const priceRange = document.querySelector('.filter-group input[type="range"]');
+  if (priceRange) {
+    filterState.priceMax = parseInt(priceRange.value, 10);
+  }
+  renderShopGridPage(currentPage);
+});
+
+</script>
 </body>
 </html>

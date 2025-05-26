@@ -7,3 +7,12 @@ a{
     text-decoration: none;
     color: #000000;
 }
+
+#cart-overlay.active {
+  box-shadow: 0 0 0 100vw rgba(24,24,36,0.38);
+}
+
+/* For Search Bar */
+.suggestion-item:hover {
+  background: #f8f8ff;
+}

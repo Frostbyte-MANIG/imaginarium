@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginarium</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="addtocart.css">
+    <link rel="stylesheet" href="productpage.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar-top">
+            <div class="social-link">
+                <i><img src="./image/twitter.png" alt="" width="30px"></i>
+                <i><img src="./image/facebook.png" alt="" width="28px"></i>
+                <i><img src="./image/instagram.png" alt="" width="28px"></i>
+            </div>
+            <div class="logo">
+                <h5>- WELCOME TO -</h5>
+                <h3>IMAGINARIUM</h3>
+            </div>
+            <div class="icons">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <div class="search-suggestions"></div>
+                </div>
+                <i class="search-icon">
+                    <img src="./image/search.png" alt="Search" width="24">
+                </i>
+                <a href="favorites.html">
+                  <i><img src="./image/heart.png" alt="" width="28px"></i>
+                </a>
+                <a href="#" class="cart-icon-link">
+                  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shoplayout.html">Shop</a></li>
+                    <li><a href="categorieslist.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Cart Drawer Markup -->
+<div id="cart-overlay"></div>
+<aside id="cart-drawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            Total: <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+</aside>
+
+<main class="product-main dreamy-fadein">
+<button onclick="history.back()" class="cart-btn dreamy-back-btn" type="button">
+    <span class="back-arrow">&lt;</span>
+    <span class="back-text">Back</span>
+</button>
+    <div class="dreamy-product-flex">
+        <div class="dreamy-img-card">
+            <img id="product-image" src="./image/outfits/starlitgown.png" alt="Product Image" class="dreamy-img dreamy-img-portrait">
+        </div>
+          <div class="dreamy-info-card">
+            <h1 id="product-title" class="dreamy-title">Starlit Gown</h1>
+            <div id="product-price" class="dreamy-price">$120</div>
+            <div class="dreamy-selectors">
+              <div class="dreamy-size-row">
+                <span>Size:</span>
+                <div class="dreamy-size-btns">
+                  <button class="size-btn" data-size="XS">XS</button>
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+                  <button class="size-btn" data-size="XXL">XXL</button>
+                </div>
+              </div>
+              <div class="dreamy-qty-row">
+                <span>Quantity:</span>
+                <button id="qty-minus" type="button" class="size-btn dreamy-qty-btn">-</button>
+                <input id="quantity" type="number" value="1" min="1" max="99">
+                <button id="qty-plus" type="button" class="size-btn dreamy-qty-btn">+</button>
+              </div>
+            </div>
+            <!-- Actions row is now OUTSIDE dreamy-selectors -->
+            <div class="dreamy-actions-row">
+              <button class="cart-btn dreamy-cta add-to-cart-btn" type="button">Add to Cart</button>
+              <button class="cart-btn buy-now-btn buy-btn" type="button">Buy Now</button>
+              <button id="fav-btn" class="fav-btn dreamy-fav" aria-label="Add to favorites">
+                <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path class="heart-shape" d="M12 21s-6.5-5.14-9-8.36C1.11 10.13 1 7.5 3.07 5.57 5.13 3.64 8.09 4.13 10 6.09c1.91-1.96 4.87-2.45 6.93-.52C23 7.5 22.89 10.13 21 12.64 18.5 15.86 12 21 12 21z"
+                    stroke="#232323" stroke-width="2" fill="none"/>
+                </svg>
+              </button>
+            </div>
+            <div id="buy-message" class="dreamy-message">Added to cart!</div>
+          </div>
+    </div>
+      <section class="dreamy-desc-section">
+        <h2 class="desc-heading">Description</h2>
+        <div id="product-desc" class="dreamy-desc">A dreamy gown with shimmering accents.</div>
+    </section>
+</main>
+
+
+<script src="product-data.js"></script>
+<script src="app.js"></script>
+<script src="search.js"></script>
+<script src="favorites.js"></script>
+<script src="addtocart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name) || '';
+  }
+
+  const name = getParam('name');
+  const price = getParam('price');
+  const desc = getParam('desc');
+  const favBtn = document.getElementById('fav-btn');
+  const heart = favBtn.querySelector('.heart-shape');
+  const wishlistId = window.location.pathname + window.location.search;
+
+  if (name) document.getElementById('product-title').textContent = name;
+  if (price) document.getElementById('product-price').textContent = `$${price}`;
+  if (desc) document.getElementById('product-desc').textContent = desc;
+
+  /*const img = getParam('img');
+  const category = getParam('category');
+  if (img && category) {
+    document.getElementById('product-image').src = `image/products/${category}/${img}`;
+    document.getElementById('product-image').alt = name || 'Product Image';
+  }*/
+const img = getParam('img');
+const category = getParam('category');
+if (img && img.startsWith('image/')) {
+  // Full path provided (from index.html Best Sellers)
+  document.getElementById('product-image').src = img;
+  document.getElementById('product-image').alt = name || 'Product Image';
+} else if (img && category) {
+  // Only filename and category provided (from shoplayout.html)
+  document.getElementById('product-image').src = `image/products/${category}/${img}`;
+  document.getElementById('product-image').alt = name || 'Product Image';
+}
+
+  // Check if in wishlist on load
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const isFav = wishlist.some(i => i.id === wishlistId);
+  if (isFav) {
+    favBtn.classList.add('favorited');
+    heart.setAttribute('fill', '#fff');
+    heart.setAttribute('stroke', '#fff');
+  } else {
+    favBtn.classList.remove('favorited');
+    heart.setAttribute('fill', 'none');
+    heart.setAttribute('stroke', '#fff');
+  }
+
+  favBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const isNowFav = favBtn.classList.toggle('favorited');
+    heart.setAttribute('fill', isNowFav ? '#fff' : 'none');
+    heart.setAttribute('stroke', '#fff');
+    const product = {
+      id: wishlistId,
+      name: document.getElementById('product-title').textContent,
+      price: document.getElementById('product-price').textContent.replace(/[^0-9.]/g, ''),
+      img: document.getElementById('product-image').src
+    };
+    if (isNowFav) {
+      if (!wishlist.some(i => i.id === wishlistId)) {
+        wishlist.push(product);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      }
+      window.addToWishlist && window.addToWishlist(product);
+    } else {
+      wishlist = wishlist.filter(i => i.id !== wishlistId);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+  });
+});
+
+// Size selection
+let selectedSize = '';
+document.querySelectorAll('.size-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    selectedSize = this.getAttribute('data-size');
+  });
+});
+
+// Quantity controls
+const qtyInput = document.getElementById('quantity');
+document.getElementById('qty-minus').onclick = () => {
+  let v = parseInt(qtyInput.value, 10);
+  if (v > 1) qtyInput.value = v - 1;
+};
+document.getElementById('qty-plus').onclick = () => {
+  let v = parseInt(qtyInput.value, 10);
+  if (v < 99) qtyInput.value = v + 1;
+};
+
+// Add to Cart button
+document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+  const name = document.getElementById('product-title').textContent.trim();
+  const priceText = document.getElementById('product-price').textContent.replace(/[^0-9.]/g, '');
+  const price = parseFloat(priceText) || 0;
+  const qty = parseInt(document.getElementById('quantity').value, 10) || 1;
+  const sizeBtn = document.querySelector('.size-btn.selected');
+  const size = sizeBtn ? sizeBtn.getAttribute('data-size') : '';
+
+  // Add to cart (with size info if selected)
+  addToCart(
+    size ? `${name} (${size})` : name,
+    price,
+    qty
+  );
+
+  // Show feedback message
+  const msg = document.getElementById('buy-message');
+  msg.textContent = "Added to cart!";
+  msg.style.display = 'block';
+  setTimeout(() => { msg.style.display = 'none'; }, 2000);
+});
+
+// Buy Now button
+document.querySelector('.buy-btn').addEventListener('click', function() {
+  alert('Proceeding to checkout for: ' + document.getElementById('product-title').textContent);
+});
+</script>
+<script>
+let lastScroll = 0;
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+        header.classList.remove('hide-on-scroll');
+        lastScroll = 0;
+        return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 60) {
+        header.classList.add('hide-on-scroll');
+    } else {
+        header.classList.remove('hide-on-scroll');
+    }
+    lastScroll = currentScroll;
+});
+</script>
+</body>
+</html>

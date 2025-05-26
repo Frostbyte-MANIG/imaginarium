@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Category | Imaginarium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="addtocart.css">
+  <link rel="stylesheet" href="category.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="navbar-top">
+      <div class="social-link">
+        <i><img src="./image/twitter.png" alt="" width="30px"></i>
+        <i><img src="./image/facebook.png" alt="" width="28px"></i>
+        <i><img src="./image/instagram.png" alt="" width="28px"></i>
+      </div>
+      <div class="logo">
+        <h5>- WELCOME TO -</h5>
+        <h3>IMAGINARIUM</h3>
+      </div>
+            <div class="icons">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <div class="search-suggestions"></div>
+                </div>
+                <i class="search-icon">
+                    <img src="./image/search.png" alt="Search" width="24">
+                </i>
+        <a href="favorites.html">
+          <i><img src="./image/heart.png" alt="" width="28px"></i>
+        </a>
+        <a href="#" class="cart-icon-link">
+          <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shoplayout.html">Shop</a></li>
+          <li><a href="categorieslist.html">Categories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="category-hero" id="category-hero">
+<a href="categorieslist.html" class="dreamy-back-btn" title="Back to Categories">
+  <span class="back-arrow">&lt;</span>
+  <span class="back-text">Back to Categories</span>
+</a>
+    <div class="category-image-wrapper">
+      <img class="category-image" id="category-image" src="" alt="Category Image">
+    </div>
+    <h1 id="category-title"></h1>
+    <p id="category-desc"></p>
+  </section>
+  <section>
+    <div class="product-list" id="category-products"></div>
+  </section>
+</main>
+
+<script src="search.js"></script>
+<script src="addtocart.js"></script>
+
+<script>
+// --- CATEGORY DATA ---
+const categories = {
+  "seraphic-grace": {
+    name: "Seraphic Grace",
+    desc: "As elegant as wind, as ethereal as light.",
+    img: "./image/categories/sg.png",
+    accent: "#b388ff",
+    bgGradient: "linear-gradient(120deg, #b388ff 0%, #fff 100%)"
+  },
+  "iridescent-glow": {
+    name: "Iridescent Glow",
+    desc: "Light dances, and so can colors.",
+    img: "./image/categories/ig.png",
+    accent: "#ffe066",
+    bgGradient: "linear-gradient(120deg, #ffe066 0%, #fff9df 100%)"
+  },
+  "star-guardians": {
+    name: "Star Guardians",
+    desc: "Burning brighter than ever.",
+    img: "./image/categories/sgs.png",
+    accent: "#7b5eea",
+    bgGradient: "linear-gradient(120deg, #7b5eea 0%, #fff 100%)"
+  },
+  "midnight-descenders": {
+    name: "Midnight Descenders",
+    desc: "Traverse the night, be a star.",
+    img: "./image/categories/md.png",
+    accent: "#23232a",
+    bgGradient: "linear-gradient(120deg, #23232a 0%, #4b2fae 100%)"
+  },
+  "bandle-city-blessed": {
+    name: "Bandle City Blessed",
+    desc: "Home of magic and whimsy.",
+    img: "./image/categories/bcb.png",
+    accent: "#22f167",
+    bgGradient: "linear-gradient(120deg, #22f167 0%, #fff 100%)"
+  },
+  "lucid-lavender": {
+    name: "Lucid Lavender",
+    desc: "Dressed for the occasion in (shades of) purple.",
+    img: "./image/categories/ll.png",
+    accent: "#a084ca",
+    bgGradient: "linear-gradient(120deg, #a084ca 0%, #fff 100%)"
+  },
+  "pastel-princess": {
+    name: "Pastel Princess",
+    desc: "All things sweet and cutesy.",
+    img: "./image/categories/pp.png",
+    accent: "#ffb6b9",
+    bgGradient: "linear-gradient(120deg, #ffb6b9 0%, #fff 100%)"
+  },
+  "scarlets-letter": {
+    name: "Scarlets Letter",
+    desc: "Romancing the color red.",
+    img: "./image/categories/sl.png",
+    accent: "#ff6f91",
+    bgGradient: "linear-gradient(120deg, #ff6f91 0%, #fff 100%)"
+  },
+  "in-solaris-name": {
+    name: "In Solari's Name",
+    desc: "The sun always rises.",
+    img: "./image/categories/isn.png",
+    accent: "#ffd700",
+    bgGradient: "linear-gradient(120deg, #ffd700 0%, #fff 100%)"
+  },
+  "urban-street-dwellers": {
+    name: "Urban Street Dwellers",
+    desc: "Roam the city in sharp, strong style.",
+    img: "./image/categories/usd.png",
+    accent: "#222",
+    bgGradient: "linear-gradient(120deg, #222 0%, #fff 100%)"
+  }
+};
+
+// --- PRODUCT DATA (EXAMPLE, EXTEND AS NEEDED) ---
+const productList = [
+  // Seraphic Grace
+  { name: "Destined Fairness", 
+    category: "Seraphic Grace", 
+    img: "Destined Fairness.png", 
+    desc: "A veil that shimmers with the light of the stars.", 
+    price: "79.99" },
+
+  { name: "Gale Seeker", 
+    category: "Seraphic Grace", 
+    img: "Gale Seeker.png", 
+    desc: "Soft, flowing fabric that feels like a cloud.", 
+    price: "59.99" },
+
+  { name: "Isolde’s Promise", 
+    category: "Seraphic Grace", 
+    img: "Isolde’s Promise.png", 
+    desc: "Soft, flowing fabric that feels like a cloud.", 
+    price: "59.99" },
+
+  { name: "Veiled Faithful", 
+    category: "Seraphic Grace", 
+    img: "Veiled Faithful.png", 
+    desc: "Soft, flowing fabric that feels like a cloud.", 
+    price: "59.99" },
+
+  // Iridescent Glow
+  { name: "Elegance", 
+    category: "Iridescent Glow", 
+    img: "Elegance.png", 
+    desc: "Colors shift with every movement.", 
+    price: "69.99" },
+
+  { name: "Eternity", 
+    category: "Iridescent Glow", 
+    img: "Eternity.png", 
+    desc: "A pastel masterpiece for dreamers.", 
+    price: "54.99" },
+
+  { name: "Resplendence", 
+    category: "Iridescent Glow", 
+    img: "Resplendence.png", 
+    desc: "A pastel masterpiece for dreamers.", 
+    price: "54.99" },
+
+  { name: "Transparency", 
+    category: "Iridescent Glow", 
+    img: "Transparency.png", 
+    desc: "A pastel masterpiece for dreamers.", 
+    price: "54.99" },
+
+  // Star Guardians
+  { name: "Daughter of the Stars", 
+    category: "Star Guardians", 
+    img: "Daughter of the Stars.png", 
+    desc: "A cape that glows in the dark.", 
+    price: "89.99" },
+
+  { name: "Rebellious Star", 
+    category: "Star Guardians", 
+    img: "Rebellious Star.png", 
+    desc: "A cape that glows in the dark.", 
+    price: "89.99" },
+    
+  { name: "Star-studded Fox", 
+    category: "Star Guardians", 
+    img: "Star-studded Fox.png", 
+    desc: "A cape that glows in the dark.", 
+    price: "89.99" },
+    
+  { name: "Starry-eyed Songstress", 
+    category: "Star Guardians", 
+    img: "Starry-eyed Songstress.png", 
+    desc: "A cape that glows in the dark.", 
+    price: "89.99" },  
+    
+  // Midnight Descenders
+  { name: "Cosmic Cascade", 
+    category: "Midnight Descenders", 
+    img: "Cosmic Cascade.png", 
+    desc: "Twinkling gems inspired by the night sky.", 
+    price: "39.99" },
+
+  { name: "Deep Sea Voyager", 
+    category: "Midnight Descenders", 
+    img: "Deep Sea Voyager.png", 
+    desc: "Twinkling gems inspired by the night sky.", 
+    price: "39.99" },
+    
+  { name: "Starshaper", 
+    category: "Midnight Descenders", 
+    img: "Starshaper.png", 
+    desc: "Twinkling gems inspired by the night sky.", 
+    price: "39.99" },
+    
+  { name: "Twilight Forager", 
+    category: "Midnight Descenders", 
+    img: "Twilight Forager.png", 
+    desc: "Twinkling gems inspired by the night sky.", 
+    price: "39.99" },  
+
+  // Bandle City Blessed
+  { name: "Mushroom Mage", 
+    category: "Bandle City Blessed", 
+    img: "Mushroom Mage.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+
+  { name: "Red Riding Annie", 
+    category: "Bandle City Blessed", 
+    img: "Red Riding Annie.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+    
+  { name: "Shrooglet's Shroomcap", 
+    category: "Bandle City Blessed", 
+    img: "Shrooglet's Shroomcap.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+    
+  { name: "Woodland Skipper", 
+    category: "Bandle City Blessed", 
+    img: "Woodland Skipper.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },  
+
+  // Lucid Lavender
+  { name: "Eliza's Elegance", 
+    category: "Lucid Lavender", 
+    img: "Eliza's Elegance.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+
+  { name: "Lady Luck in Lavender", 
+    category: "Lucid Lavender", 
+    img: "Lady Luck in Lavender.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+    
+  { name: "Magister Magician", 
+    category: "Lucid Lavender",  
+    img: "Magister Magician.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },
+    
+  { name: "Malevolent Maid", 
+    category: "Lucid Lavender", 
+    img: "Malevolent Maid.png", 
+    desc: "Playful and magical, for the young at heart.", 
+    price: "49.99" },  
+
+  // Pastel Princess
+  { name: "Cuddle Core", 
+    category: "Pastel Princess", 
+    img: "Cuddle Core.png", 
+    desc: "Pink set in a delicate color palette.", 
+    price: "44.99" },
+
+  { name: "Gentle Heartbreaker", 
+    category: "Pastel Princess", 
+    img: "Gentle Heartbreaker.png", 
+    desc: "Pink set in a delicate color palette.", 
+    price: "44.99" },
+    
+  { name: "Jolly Jumpers", 
+    category: "Pastel Princess", 
+    img: "Jolly Jumpers.png", 
+    desc: "Pink set in a delicate color palette.", 
+    price: "44.99" },
+    
+  { name: "Strawberry Milk", 
+    category: "Pastel Princess", 
+    img: "Strawberry Milk.png", 
+    desc: "Pink set in a delicate color palette.", 
+    price: "44.99" },  
+
+  // Scarlets Letter
+  { name: "Bloodletter's Scholar", 
+    category: "Scarlets Letter", 
+    img: "Bloodletter's Scholar.png", 
+    desc: "Elegant blood for a celestial touch.", 
+    price: "59.99" },
+
+  { name: "Cranberry Pinafore", 
+    category: "Scarlets Letter", 
+    img: "Cranberry Pinafore.png", 
+    desc: "Elegant blood for a celestial touch.", 
+    price: "59.99" },
+    
+  { name: "Fair Crimson Lady", 
+    category: "Scarlets Letter", 
+    img: "Fair Crimson Lady.png", 
+    desc: "Elegant blood for a celestial touch.", 
+    price: "59.99" },
+    
+  { name: "Sangria Deaconess", 
+    category: "Scarlets Letter", 
+    img: "Sangria Deaconess.png", 
+    desc: "Elegant blood for a celestial touch.", 
+    price: "59.99" },  
+     
+  // In Solari's Name
+  { name: "Kiongozi The Flaming God of War", 
+    category: "In Solari's Name", 
+    img: "Kiongozi The Flaming God of War.png", 
+    desc: "Golden set in a delicate color palette.", 
+    price: "44.99" },
+
+  { name: "Messenger of Rakkor", 
+    category: "In Solari's Name", 
+    img: "Messenger of Rakkor.png", 
+    desc: "Golden set in a delicate color palette.", 
+    price: "44.99" },
+    
+  { name: "The Radiant Dawn", 
+    category: "In Solari's Name", 
+    img: "The Radiant Dawn.png", 
+    desc: "Golden set in a delicate color palette.", 
+    price: "44.99" },
+    
+  { name: "Zenith Raydancer", 
+    category: "In Solari's Name", 
+    img: "Zenith Raydancer.png", 
+    desc: "Golden set in a delicate color palette.", 
+    price: "44.99" },  
+
+  // Urban Street Dwellers
+  { name: "Magatsukami no Kage", 
+    category: "Urban Street Dwellers", 
+    img: "Magatsukami no Kage.png", 
+    desc: "Bold style for the city explorer.", 
+    price: "64.99" },
+
+  { name: "Rojiura ni Hisomu Yurebito", 
+    category: "Urban Street Dwellers", 
+    img: "Rojiura ni Hisomu Yurebito.png", 
+    desc: "Bold style for the city explorer.", 
+    price: "64.99" },
+    
+  { name: "URBAN: Cypressus Custos", 
+    category: "Urban Street Dwellers", 
+    img: "URBAN Cypressus Custos.png", 
+    desc: "Bold style for the city explorer.", 
+    price: "64.99" },
+    
+  { name: "URBAN: Divina Vulpes", 
+    category: "Urban Street Dwellers", 
+    img: "URBAN Divina Vulpes.png", 
+    desc: "Bold style for the city explorer.", 
+    price: "64.99" }, 
+
+];
+
+// --- PAGE LOGIC ---
+function getCategoryKey() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('cat') || '';
+}
+
+function renderCategoryPage() {
+  const catKey = getCategoryKey();
+  const cat = categories[catKey];
+  const heroImg = document.getElementById('category-image');
+  const heroTitle = document.getElementById('category-title');
+  const heroDesc = document.getElementById('category-desc');
+  if (!cat) {
+    heroTitle.textContent = "Category Not Found";
+    heroDesc.textContent = "";
+    heroImg.style.display = "none";
+    document.getElementById('category-products').innerHTML = "<p style='text-align:center;font-size:1.2em;color:#888;'>No such category.</p>";
+    return;
+  }
+  if (cat && cat.accent) {
+  document.body.style.setProperty('--accent', cat.accent);
+  }
+  if (cat && cat.bgGradient) {
+  document.querySelector('.category-hero').style.setProperty('--bg-gradient', cat.bgGradient);
+  }
+  heroImg.src = cat.img;
+  heroImg.alt = cat.name;
+  heroTitle.textContent = cat.name;
+  heroDesc.textContent = cat.desc;
+
+  // Filter products for this category
+  const products = productList.filter(
+    p => p.category.replace(/\s+/g, '-').replace(/'/g, '').toLowerCase() === cat.name.replace(/\s+/g, '-').replace(/'/g, '').toLowerCase()
+  );
+  const grid = document.getElementById('category-products');
+  if (products.length === 0) {
+    grid.innerHTML = "<p style='text-align:center;font-size:1.2em;color:#888;'>No products found for this category.</p>";
+    return;
+  }
+  grid.innerHTML = "";
+  products.forEach(product => {
+    // Encode product data for URL
+    const params = new URLSearchParams({
+      name: product.name,
+      img: product.img,
+      desc: product.desc,
+      price: product.price,
+      category: cat.name
+    }).toString();
+
+    grid.innerHTML += `
+      <a href="product.html?${params}" class="product-link" style="text-decoration:none;color:inherit;">
+        <div class="product-card long-portrait">
+          <div class="product-img-portrait">
+            <img src="image/products/${cat.name}/${product.img}" alt="${product.name}">
+          </div>
+          <div class="product-card-content">
+            <h3>${product.name}</h3>
+            <p>${product.desc}</p>
+            <div class="price">$${product.price}</div>
+            <button class="add-to-cart-btn" onclick="event.preventDefault()">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+    `;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderCategoryPage);
+</script>
+</body>
+</html>

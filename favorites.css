@@ -1,0 +1,268 @@
+body {
+  background: linear-gradient(120deg, #111 0%, #222 60%, #444 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+.wishlist-main {
+  max-width: 1100px;
+  margin: 100px auto 40px auto;
+  padding: 32px 18px;
+  background: rgba(30,30,30,0.97);
+  border-radius: 28px;
+  box-shadow: 0 8px 40px #2228, 0 2px 8px #fff1;
+  animation: fadeInCard 1.1s cubic-bezier(.77,0,.18,1) both;
+  position: relative;
+  overflow: hidden;
+}
+.wishlist-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 10%, #fff1 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+.wishlist-title {
+  font-family: 'Poiret One', cursive;
+  color: #fff;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 2px 16px #222;
+  position: relative;
+  z-index: 1;
+}
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 36px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+.wishlist-card {
+  width: 220px;
+  min-height: 370px;
+  max-height: 400px;
+  background: linear-gradient(135deg, #222 60%, #444 100%);
+  border-radius: 22px;
+  box-shadow: 0 2px 24px #2228, 0 2px 8px #fff1;
+  padding: 18px 12px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+  animation: fadeInCard 1s cubic-bezier(.77,0,.18,1);
+  overflow: hidden;
+  aspect-ratio: 10/17;
+}
+.wishlist-card::before {
+  content: "";
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, #fff2 0%, transparent 80%);
+  z-index: 0;
+}
+.wishlist-card:hover {
+  box-shadow: 0 8px 32px #fff4;
+  transform: translateY(-4px) scale(1.03);
+}
+.wishlist-img {
+  width: 160px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px #2228;
+  background: #111;
+  margin-bottom: 14px;
+  border: 3px solid #444;
+  transition: box-shadow 0.2s, border 0.2s;
+  z-index: 1;
+}
+.wishlist-name {
+  color: #fff;
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  z-index: 1;
+  text-shadow: 0 2px 8px #222;
+}
+.wishlist-price {
+  color: #ccc;
+  font-size: 1.08rem;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 600;
+  z-index: 1;
+}
+.wishlist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  justify-content: flex-end;
+  align-items: stretch;
+  width: 100%;
+  z-index: 1;
+}
+.wishlist-remove, .wishlist-addcart {
+  border-radius: 12px;
+  padding: 10px 0;
+  font-size: 1em;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #fff 0%, #444 100%);
+  color: #222;
+  box-shadow: 0 2px 12px #2222;
+  transition: background 0.3s, color 0.3s, box-shadow 0.2s, border 0.2s, transform 0.15s;
+  margin: 0 0 2px 0;
+  width: 100%;
+  min-width: 0;
+}
+.wishlist-remove {
+  border-radius: 100px;
+  padding: 12px 0;
+  font-size: 1em;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 2px solid #333;
+  outline: none;
+  background: #222;
+  color: #fff;
+  box-shadow: 0 2px 12px #1113;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s, transform 0.13s;
+  margin: 0 0 2px 0;
+  width: 100%;
+  min-width: 0;
+}
+.wishlist-remove:hover, .wishlist-remove:focus {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+  box-shadow: 0 4px 16px #fff2;
+  transform: translateY(-2px) scale(1.04);
+}
+.wishlist-addcart {
+  border-radius: 100px;
+  padding: 12px 0;
+  font-size: 1em;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 2px solid #333;
+  outline: none;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 12px #1113;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s, transform 0.13s;
+  margin: 0 0 2px 0;
+  width: 100%;
+  min-width: 0;
+}
+.wishlist-addcart:hover, .wishlist-addcart:focus {
+  background: #222;
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 4px 16px #fff2;
+  transform: translateY(-2px) scale(1.04);
+}
+.wishlist-empty {
+  color: #ccc;
+  text-align: center;
+  font-size: 1.2em;
+  margin: 60px 0;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+  z-index: 1;
+}
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@media (max-width: 700px) {
+  .wishlist-card {
+    width: 120px;
+    min-height: 220px;
+    max-height: 240px;
+    aspect-ratio: 10/17;
+  }
+  .wishlist-main {
+    padding: 10px 2vw;
+  }
+  .wishlist-grid {
+    gap: 18px;
+  }
+  .wishlist-img {
+    width: 80px;
+    height: 110px;
+  }
+  .wishlist-actions {
+    gap: 6px;
+  }
+  .wishlist-remove, .wishlist-addcart {
+    padding: 7px 0;
+    font-size: 0.95em;
+  }
+}
+
+/* Back Button Style */
+.dreamy-back-btn {
+  margin-bottom: 32px;
+  background: #222;
+  border: none;
+  color: #fff;
+  font-size: 1.08rem;
+  font-family: 'Poiret One', cursive;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 12px 28px 12px 18px;
+  box-shadow: 0 2px 12px #1117;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.13s;
+  letter-spacing: 0.08em;
+  outline: none;
+  border: 2px solid #333;
+}
+.dreamy-back-btn:hover, .dreamy-back-btn:focus {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+  box-shadow: 0 4px 24px #fff2;
+  transform: translateY(-2px) scale(1.04);
+}
+.back-arrow {
+  font-size: 1.3em;
+  margin-right: 4px;
+  font-weight: bold;
+  filter: drop-shadow(0 1px 4px #fff8);
+  transition: color 0.2s;
+  line-height: 1;
+}
+.back-text {
+  font-size: 1.08em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}

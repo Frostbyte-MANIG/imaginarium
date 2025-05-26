@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imaginarium</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css"> <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="addtocart.css">
 </head>
 <body>
     
@@ -23,31 +25,50 @@
                 <h3>IMAGINARIUM</h3>
             </div>
             <div class="icons">
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <i class="search-icon">
-            <img src="./image/search.png" alt="Search" width="28px">
-        </i>
-    </div>
-    <a href="favorites.html">
-  <i><img src="./image/heart.png" alt="" width="28px"></i>
-</a>
-    <a href="cart.html">
-  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
-</a>
-</div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shoplayout.html">Shop</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </div> <!-- end of .navbar-top -->
-</div> <!-- end of .container -->
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <div class="search-suggestions"></div>
+                </div>
+                <i class="search-icon">
+                    <img src="./image/search.png" alt="Search" width="24">
+                </i>
+                <a href="favorites.html">
+                  <i><img src="./image/heart.png" alt="" width="28px"></i>
+                </a>
+                <a href="#" class="cart-icon-link">
+                  <i><img src="./image/shopping-cart.png" alt="Cart" width="30px"></i>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shoplayout.html">Shop</a></li>
+                    <li><a href="categorieslist.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div> <!-- end of .navbar-top -->
+    </div> <!-- end of .container -->
 </header>
+
+<!-- Cart Drawer Markup -->
+<div id="cart-overlay"></div>
+<aside id="cart-drawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            Total: <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+</aside>
 
 <main>
 <section class="slider-wrapper categories-bg">
@@ -55,69 +76,109 @@
     <h1 class="slider-title">- CATEGORIES -</h1>
     
     <div class="welcome-message">
-        <h1>Welcome to a world</h1>
-        <h2>Explore. Edge. Release</h2>
+        <h1>The Fashion of Imagination</h1>
+        <h2>Explore. Imagine. Style</h2>
     </div>
 
     <section class="slider-container">
-    <div class="slider">
-        <div class="item glow-white">
-            <h1>Seraphic Grace</h1>
-                <p>As elegant as wind, as ethereal as light.</p>
-                <i><img src="./image/categories/sg.png" alt="sg" width="150px"></i>
+        <div class="slider">
+            <a href="category.html?cat=seraphic-grace" class="item-link">
+                <div class="item glow-white">
+                    <div class="item-bg" style="background-image: url('./image/categories/sg.png');"></div>
+                    <div class="item-content">
+                        <h1>Seraphic Grace</h1>
+                        <p>As elegant as wind, as ethereal as light.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=iridescent-glow" class="item-link">
+                <div class="item glow-white">
+                    <div class="item-bg" style="background-image: url('./image/categories/ig.png');"></div>
+                    <div class="item-content">
+                        <h1>Iridescent Glow</h1>
+                        <p>Light dances, and so can colors.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=star-guardians" class="item-link">
+                <div class="item glow-pink">
+                    <div class="item-bg" style="background-image: url('./image/categories/sgs.png');"></div>
+                    <div class="item-content">
+                        <h1>Star Guardians</h1>
+                        <p>Burning brighter than ever.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=midnight-descenders" class="item-link">
+                <div class="item glow-blue">
+                    <div class="item-bg" style="background-image: url('./image/categories/md.png');"></div>
+                    <div class="item-content">
+                        <h1>Midnight Descenders</h1>
+                        <p>Traverse the night, be a star.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=bandle-city-blessed" class="item-link">
+                <div class="item glow-green">
+                    <div class="item-bg" style="background-image: url('./image/categories/bcb.png');"></div>
+                    <div class="item-content">
+                        <h1>ㅤBandle CityㅤBlessedㅤ</h1>
+                        <p>Home of magic and whimsy.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=lucid-lavender" class="item-link">
+                <div class="item glow-purple">
+                    <div class="item-bg" style="background-image: url('./image/categories/ll.png');"></div>
+                    <div class="item-content">
+                        <h1>Lucid Lavender</h1>
+                        <p>Dressed for the occasion in (shades of) purple.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=pastel-princess" class="item-link">
+                <div class="item glow-pink">
+                    <div class="item-bg" style="background-image: url('./image/categories/pp.png');"></div>
+                    <div class="item-content">
+                        <h1>Pastel Princess</h1>
+                        <p>For all things sweet and cutesy.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=scarlets-letter" class="item-link">
+                <div class="item glow-red">
+                    <div class="item-bg" style="background-image: url('./image/categories/sl.png');"></div>
+                    <div class="item-content">
+                        <h1>Scarlets Letter</h1>
+                        <p>Romancing the color red.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=in-solaris-name" class="item-link">
+                <div class="item glow-yellow">
+                    <div class="item-bg" style="background-image: url('./image/categories/isn.png');"></div>
+                    <div class="item-content">
+                        <h1>In Solari's Name</h1>
+                        <p>The sun always rises.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="category.html?cat=urban-street-dwellers" class="item-link">
+                <div class="item glow-blue">
+                    <div class="item-bg" style="background-image: url('./image/categories/usd.png');"></div>
+                    <div class="item-content">
+                        <h1>Urban Street Dwellers</h1>
+                        <p>Roam the city in sharp, strong style.</p>
+                    </div>
+                </div>
+            </a>
+            <button id="next">></button>
+            <button id="prev"><</button>
         </div>
-        <div class="item">
-            <h1>Iridescent Glow</h1>
-                <p>Light dances, and so can colors.</p>
-                <i><img src="./image/categories/ig.png" alt="ig" width="200px"></i>
-        </div>
-        <div class="item glow-pink">
-            <h1>Star Guardians</h1>
-                <p>Burning brighter than ever.</p>
-                <i><img src="./image/categories/sgs.png" alt="" width="200px"></i>
-        </div>
-        <div class="item glow-blue">
-            <h1>Midnight Descenders</h1>
-                <p>Traverse the night, be a star.</p>
-                <i><img src="./image/categories/md.png" alt="md" width="200px"></i>
-        </div>
-        <div class="item glow-green">
-            <h1>ㅤBandle CityㅤBlessedㅤ</h1>
-                <p>Home of magic and whimsy.</p>
-                <i><img src="./image/categories/bcb.png" alt="bcb" width="200px"></i>
-        </div>
-        <div class="item glow-purple">
-            <h1>Lucid Lavender</h1>
-                <p>Dressed for the occasion in (shades of) purple.</p>
-                <i><img src="./image/categories/ll.png" alt="" width="200px"></i>
-        </div>
-        <div class="item glow-pink">
-            <h1>Pastel Princess</h1>
-                <p>For all things sweet and cutesy.</p>
-                <i><img src="./image/categories/pp.png" alt="" width="200px"></i>
-        </div>
-        <div class="item glow-red">
-            <h1>Scarlets Letter</h1>
-                <p>Romancing the color red.</p>
-                <i><img src="./image/categories/sl.png" alt="" width="200px"></i>
-        </div>
-        <div class="item glow-yellow">
-            <h1>In Solari's Name</h1>
-                <p>The sun always rises.</p>
-                <i><img src="./image/categories/isn.png" alt="" width="200px"></i>
-        </div>
-        <div class="item glow-blue">
-            <h1>Urban Street Dwellers</h1>
-                <p>Roam the city in sharp, strong style.</p>
-                <i><img src="./image/categories/usd.png" alt="" width="200px"></i>
-        </div>
+    </section>
+</section>
             
-        <button id="next">></button>
-        <button id="prev"><</button>
-    </div>
-
    <section class="new-arrivals">
-
     <div class="scroll">
         <div class="scroll-text">
             !! NEW ARRIVALS !!
@@ -154,42 +215,279 @@
         <button class="arrivals-arrow left">&#8592;</button>
         <div class="arrivals-list">
             <div class="arrival-item">
-                <img src="./image/outfits/starlitgown.png" alt="New Arrival 1" width="120">
-                <h3>Starlit Gown</h3>
+                <img src="./image/products/Seraphic Grace/Destined Fairness.png" alt="New Arrival 1" width="120">
+                <h3>Destined Fairness</h3>
                 <p>A dreamy gown with shimmering accents.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Starlit Gown', 120)">Add to Cart</button>
             </div>
             <div class="arrival-item">
-                <img src="./image/outfits/celestialcape.png" alt="New Arrival 2" width="120">
-                <h3>Celestial Cape</h3>
+                <img src="./image/products/Lucid Lavender/Eliza's Elegance.png" alt="New Arrival 2" width="120">
+                <h3>Eliza's Elegance</h3>
                 <p>Lightweight cape with cosmic embroidery.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Celestial Cape', 95)">Add to Cart</button>
             </div>
             <div class="arrival-item">
-                <img src="./image/outfits/starlitgown.png" alt="New Arrival 3" width="120">
-                <h3>Moonlight Dress</h3>
+                <img src="./image/products/In Solari's Name/Kiongozi The Flaming God of War.png" alt="New Arrival 3" width="120">
+                <h3>Kiongozi The Flaming God of War</h3>
                 <p>Elegant dress inspired by the glow of the moon.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Moonlight Dress', 110)">Add to Cart</button>
             </div>
             <div class="arrival-item">
-                <img src="./image/outfits/celestialcape.png" alt="New Arrival 4" width="120">
-                <h3>Star Boots</h3>
+                <img src="./image/products/Urban Street Dwellers/Magatsukami no Kage.png" alt="New Arrival 4" width="120">
+                <h3>Magatsukami no Kage</h3>
                 <p>Boots with sparkling star patterns for a magical touch.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Star Boots', 80)">Add to Cart</button>
             </div>
         </div>
         <button class="arrivals-arrow right">&#8594;</button>
     </div>
 </section>
 
-    <section class="best-sellers">
-        <h2>Best Sellers</h2>
-        <p>
-            Imaginarium is a curated collection of dreamy, surreal, and ethereal fashion pieces designed to inspire your imagination.
-        </p>
-    </section>
+<!-- Best Sellers Section -->
+<section class="best-sellers">
+  <div class="best-sellers-scroll">
+    <h2 class="best-sellers-title">- Best Sellers -</h2>
+    <div class="best-sellers-list">
+      <div class="best-seller-item"
+        data-name="Daughter of the Stars"
+        data-price="49.99"
+        data-desc="Shimmering colors that dance with every movement."
+        data-img="image/products/Star Guardians/Daughter of the Stars.png">
+        <img src="image/products/Star Guardians/Daughter of the Stars.png" alt="Daughter of the Stars">
+        <h3>Daughter of the Stars</h3>
+        <p>Shimmering colors that dance with every movement.</p>
+        <span class="price">$49.99</span>
+      </div>
+      <div class="best-seller-item"
+        data-name="Fair Crimson Lady"
+        data-price="59.99"
+        data-desc="Elegant blood for a celestial touch."
+        data-img="image/products/Scarletts Letter/Fair Crimson Lady.png">
+        <img src="image/products/Scarletts Letter/Fair Crimson Lady.png" alt="Fair Crimson Lady">
+        <h3>Fair Crimson Lady</h3>
+        <p>Elegant blood for a celestial touch.</p>
+        <span class="price">$59.99</span>
+      </div>
+      <div class="best-seller-item"
+        data-name="Cosmic Cascade"
+        data-price="39.99"
+        data-desc="Twinkling gems inspired by the night sky."
+        data-img="image/products/Midnight Descenders/Cosmic Cascade.png">
+        <img src="image/products/Midnight Descenders/Cosmic Cascade.png" alt="Cosmic Cascade">
+        <h3>Cosmic Cascade</h3>
+        <p>Twinkling gems inspired by the night sky.</p>
+        <span class="price">$39.99</span>
+      </div>
+      <div class="best-seller-item"
+        data-name="Jolly Jumpers"
+        data-price="44.99"
+        data-desc="Pink set in a delicate color palette."
+        data-img="image/products/Pastel Princess/Jolly Jumpers.png">
+        <img src="image/products/Pastel Princess/Jolly Jumpers.png" alt="Jolly Jumpers">
+        <h3>Jolly Jumpers</h3>
+        <p>Pink set in a delicate color palette.</p>
+        <span class="price">$44.99</span>
+      </div>
+      <div class="best-seller-item"
+        data-name="Messenger of Rakkor"
+        data-price="44.99"
+        data-desc="Golden set in a delicate color palette."
+        data-img="image/products/In Solari's Name/Messenger of Rakkor.png">
+        <img src="image/products/In Solari's Name/Messenger of Rakkor.png" alt="Messenger of Rakkor">
+        <h3>Messenger of Rakkor</h3>
+        <p>Golden set in a delicate color palette.</p>
+        <span class="price">$44.99</span>
+      </div>
+      <div class="best-seller-item"
+        data-name="Transparency"
+        data-price="44.99"
+        data-desc="Shimmering transparently for its inner beauty."
+        data-img="image/products/Iridescent Glow/Transparency.png">
+        <img src="image/products/Iridescent Glow/Transparency.png" alt="Transparency">
+        <h3>Transparency</h3>
+        <p>Shimmering transparently for its inner beauty.</p>
+        <span class="price">$44.99</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="snow.js"></script>
-    <script src="search.js"></script>
-    <script src="app.js"></script>
+<!-- Customer Reviews Section -->
+<section class="customer-reviews">
+  <h2 class="reviews-title">Customer Reviews</h2>
+  <div class="reviews-scroll">
+    <div class="reviews-list">
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Absolutely magical! The quality exceeded my expectations.</p>
+            <div class="review-author">— Luna S.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Aurora Ring<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★☆</div>
+            <p class="review-text">Beautiful design and fast shipping. Will buy again!</p>
+            <div class="review-author">— Ethan R.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Luna Necklace<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">The colors are so dreamy. I get compliments every time I wear it.</p>
+            <div class="review-author">— Mira T.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Stellar Earrings<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Perfect fit and feels luxurious. Highly recommend!</p>
+            <div class="review-author">— Alex P.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Opal Bracelet<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★☆</div>
+            <p class="review-text">Lovely packaging and great customer service.</p>
+            <div class="review-author">— Jamie L.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Moonlight Dress<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">The best online shopping experience I’ve had in a while!</p>
+            <div class="review-author">— Casey W.</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="review-detail">Purchased: Star Boots<br>Would recommend: Yes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-summary">
+  <div class="reviews-summary-rating">
+    <span class="reviews-summary-stars">★★★★★</span>
+    <span class="reviews-summary-score">4.9/5.0</span>
+    <span class="reviews-summary-based">Based on 1,200+ reviews</span>
+  </div>
+  <div class="reviews-summary-highlights">
+    <div class="reviews-summary-quote">
+      <span class="quote-mark">“</span>
+      <span class="quote-text">Shopping here always feels special. The site is beautiful and easy to use!</span>
+      <span class="quote-author">— Riley M.</span>
+    </div>
+    <div class="reviews-summary-quote">
+      <span class="quote-mark">“</span>
+      <span class="quote-text">Customer support is quick and friendly. I love the packaging too!</span>
+      <span class="quote-author">— Jordan K.</span>
+    </div>
+    <div class="reviews-summary-quote">
+      <span class="quote-mark">“</span>
+      <span class="quote-text">Fast shipping, dreamy products, and a magical experience every time.</span>
+      <span class="quote-author">— Samira L.</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="about-imaginarium">
+  <h2 class="imaginarium-title">What is Imaginarium?</h2>
+  <div class="imaginarium-desc">
+    <p>
+      Imaginarium is more than a store—it's a realm where dreams and style intertwine.<br>
+      Discover handpicked treasures, celestial designs, and magical moments crafted for those who dare to imagine.<br>
+      Step inside and let your story shine.
+    </p>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2 class="contact-title">Contact Us</h2>
+  <div class="contact-container">
+    <form class="contact-form" autocomplete="off">
+      <div class="contact-row">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="contact-btn">Send Message</button>
+    </form>
+    <div class="contact-info">
+      <div>
+        <span class="contact-icon">📧</span>
+        <a href="mailto:hello@imaginarium.com">hello@imaginarium.com</a>
+      </div>
+      <div>
+        <span class="contact-icon">📍</span>
+        <span>123 Frost Byte, Piltover City</span>
+      </div>
+      <div>
+        <span class="contact-icon">📱</span>
+        <a href="tel:+1234567890">+1 234 567 890</a>
+      </div>
+      <div class="contact-socials">
+        <a href="#" aria-label="Instagram" class="contact-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+        <a href="#" aria-label="Facebook" class="contact-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#" aria-label="Twitter" class="contact-social"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="product-data.js"></script>
+<script src="app.js"></script>
+<script src="snow.js"></script>
+<script src="search.js"></script>
+<script src="app.js"></script>
+<script src="addtocart.js"></script>
 </main>
 
+<script>
+document.querySelectorAll('.best-seller-item').forEach(item => {
+  item.style.cursor = "pointer";
+  item.addEventListener('click', function() {
+    const name = item.getAttribute('data-name');
+    const price = item.getAttribute('data-price');
+    const desc = item.getAttribute('data-desc');
+    const img = item.getAttribute('data-img');
+    const params = new URLSearchParams({
+      name,
+      price,
+      desc,
+      img
+    }).toString();
+    window.location.href = `product.html?${params}`;
+  });
+});
+</script>
 
 </body>
 </html>
